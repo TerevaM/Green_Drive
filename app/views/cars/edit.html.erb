@@ -1,0 +1,8 @@
+<h1>Cars#edit</h1>
+<p>Find me in app/views/cars/edit.html.erb</p>
+
+  <%= form_with model: @list_model, url: { action: "create" } do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.submit %>
+  <% end %>
