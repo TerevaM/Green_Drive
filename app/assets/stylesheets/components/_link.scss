@@ -1,0 +1,7 @@
+.green_drive_link {
+  border-radius: 30px;
+  &:hover {
+    color: $light-green;
+    background-color: $dark-green;
+  }
+}

@@ -7,21 +7,22 @@
   flex-grow: 0;
 }
 
-.logo_nav {
-  width: 130px;
-  height: 40px;
-  transition: all 0.5s;
-}
-
-.logo_nav:hover {
-  filter: drop-shadow(0 0 2px rgb(255, 255, 255));
-  transition: all 0.5s;
-}
-
 .green_drive_navbar {
-  background-color: #CBE9D1;
+  background-color: $light-green;
   * {
-    color:#7AD38E;
+    color:$dark-green;
     font-weight: bold;
+  }
+  .logo_nav {
+    width: 140px;
+    height: 40px;
+    transition: all 0.5s;
+  }
+  .green_drive_link {
+    border-radius: 30px;
+    &:hover {
+      color: $light-green;
+      background-color: $dark-green;
+    }
   }
 }

@@ -2,13 +2,13 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #CBE9D1;
+  background-color: $light-green;
   transition: all 0.5s;
   &:hover {
-    background-color:#7AD38E;
+    background-color: $dark-green;
     transition: all 0.5s;
     i {
-      color: #CBE9D1;
+      color: $light-green;
       transition: all 0.5s;
     }
   }
