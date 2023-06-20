@@ -9,6 +9,7 @@ image : <%= @car.image_url %>
 <%= @car.brand %>
 <%= @car.description %>
 
-<% if @car.user == current_user %>
-<%= link_to 'edit', edit_car_path(@car) %>
+<% if policy(@restaurant).edit? %>
+  <%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant), class: "btn btn-info" %> |
 <% end %>
+<%= button_to "Destroy this restaurant", @restaurant, method: :delete if policy(@restaurant).destroy?, class: "btn btn-danger" %>

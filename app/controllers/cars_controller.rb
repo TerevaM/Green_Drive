@@ -6,15 +6,18 @@ class CarsController < ApplicationController
   end
 
   def show
+    authorize @car
   end
 
   def new
     @car = Car.new
+    authorize @car
   end
 
   def create
     @car = Car.new(car_params)
     @car.user = current_user
+    authorize @car
     if @car.save
       redirect_to cars_path
     else
@@ -23,12 +26,15 @@ class CarsController < ApplicationController
   end
 
   def edit
+    authorize @car
   end
 
   def update
+    authorize @car
   end
 
   def destroy
+    authorize @car
   end
 
   private
