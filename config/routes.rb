@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :cars
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root to: 'cars#index'
-  # Defines the root path route ("/")
-  # root "articles#index"
+
+  resources :cars do
+    resources :bookings, only: [:new, :create]
+  end
+
+  resources :bookings, only: [:index, :show, :destroy]
 end

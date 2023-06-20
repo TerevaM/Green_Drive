@@ -9,6 +9,10 @@ image : <%= @car.image_url %>
 <%= @car.brand %>
 <%= @car.description %>
 
+<% if current_user %>
+  <%= link_to 'Book Now', new_car_booking_path(@car), class: 'btn btn-primary' %>
+<% end %>
+
 <% if @car.user == current_user %>
 <%= link_to 'edit', edit_car_path(@car) %>
 <% end %>
