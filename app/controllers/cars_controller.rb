@@ -41,6 +41,9 @@ class CarsController < ApplicationController
   end
 
   def destroy
+    @car.destroy
+    redirect_to root_path, status: :see_other
+    ########### REDIRECT A MODIFIER VERS DASHBOARD APRES CREATION DE LA ROUTE
     authorize @car
   end
 
