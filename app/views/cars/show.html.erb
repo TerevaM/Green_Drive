@@ -1,3 +1,14 @@
 <h1>Cars#show</h1>
 <p>Find me in app/views/cars/show.html.erb</p>
 
+Voiture de : <%= @car.user.email %>
+
+image : <%= @car.image_url %>
+<%= @car.model %>
+<%= @car.availability %>
+<%= @car.brand %>
+<%= @car.description %>
+
+<% if @car.user == current_user %>
+<%= link_to 'edit', edit_car_path(@car) %>
+<% end %>

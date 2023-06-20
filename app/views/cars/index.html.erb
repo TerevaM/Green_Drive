@@ -3,9 +3,15 @@
 
 <% @cars.each do |car| %>
 <li>
-<%= car.brand %>
-<%= car.model %>
-<%= car.user.email  %>
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="<%= car.image_url %>" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><%= car.model %></h5>
+    <p><%= car.brand %></p>
+    <p class="card-text"><%= car.description %></p>
+    <%= link_to 'details', car_path(car) %>
+  </div>
+</div>
 </li>
 <% end %>
 
