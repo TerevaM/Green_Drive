@@ -7,6 +7,21 @@
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.logo_nav {
+  width: 130px;
+  height: 40px;
+  transition: all 0.5s;
+}
+
+.logo_nav:hover {
+  filter: drop-shadow(0 0 2px rgb(255, 255, 255));
+  transition: all 0.5s;
+}
+
+.green_drive_navbar {
+  background-color: #CBE9D1;
+  * {
+    color:#7AD38E;
+    font-weight: bold;
+  }
 }
