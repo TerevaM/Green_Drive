@@ -16,3 +16,4 @@ image : <%= @car.image_url %>
 <% if @car.user == current_user %>
 <%= link_to 'edit', edit_car_path(@car) %>
 <% end %>
+<%# <%= button_to "Destroy this car", @car, method: :delete if policy(@car).destroy?, class: "btn btn-danger" %>
