@@ -9,17 +9,19 @@
 
 <h1>Voitures Disponibles</h1>
 
-<ul class="d-flex flex-column ">
+<ul class="d-flex ">
 
 <% @cars.each do |car| %>
-<li class="card" style="width: 18rem;">
-<%= image_tag car.image_url, alt: "car photo", class: "img-fluid rounded mx-auto d-block"%>
- <div class="card-body">
-<h5 class="card-title"><%= car.brand %> - <%= car.model %> </h5>
-<%= car.user.email  %>
-<p class="card-text"> <%= car.description %> </p>
-<%= link_to "Voir +", car_path(car), class: "btn btn-success" %>
- </div>
+<li>
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="<%= car.image_url %>" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title"><%= car.model %></h5>
+      <p><%= car.brand %></p>
+      <p class="card-text"><%= car.description %></p>
+      <%= link_to 'details', car_path(car) %>
+    </div>
+  </div>
 </li>
 <% end %>
 
