@@ -8,19 +8,23 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def new
     @booking = Booking.new
+    authorize @booking
   end
 
   def edit
+    authorize @booking
   end
 
   def create
     @booking = Booking.new(booking_params)
     @booking.car = @car
     @booking.user = current_user
+    authorize @booking
     if @booking.save
       redirect_to @booking, notice: "Booking was successfully created."
     else
@@ -29,6 +33,7 @@ class BookingsController < ApplicationController
   end
 
   def update
+    authorize @booking
     if @booking.update(booking_params)
       redirect_to @booking, notice: "Booking was successfully updated."
     else
@@ -38,6 +43,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
+    authorize @booking
     redirect_to bookings_url, notice: "Booking was successfully destroyed."
   end
 
