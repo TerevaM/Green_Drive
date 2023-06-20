@@ -1,19 +1,27 @@
-<h1>Cars#show</h1>
-<p>Find me in app/views/cars/show.html.erb</p>
+<h1><%= @car.brand %>, <%= @car.model %></h1>
 
-Voiture de : <%= @car.user.email %>
+<p>
+ <%= image_tag @car.image_url, alt: "car photo", class: "img-fluid rounded mx-auto"%>
 
-image : <%= @car.image_url %>
-<%= @car.model %>
-<%= @car.availability %>
-<%= @car.brand %>
-<%= @car.description %>
+
+
+ <%= @car.number_of_seats %> seats
+ <%= @car.year %>
+ <%= @car.location %>
+ <%= @car.rate %>€/jour
+
+ Voiture de: <%= @car.user.first_name %>
+<%= @car.description %></p>
 
 <% if current_user %>
-  <%= link_to 'Book Now', new_car_booking_path(@car), class: 'btn btn-primary' %>
+  <%= link_to 'Réserver maintenant', new_car_booking_path(@car), class: 'btn btn-primary' %>
 <% end %>
 
+<%# RAJOUTER ICI LES REVIEWS %>
+<%# <h3>Les dernières évaluations</h3> %>
+
+
 <% if policy(@car).edit? %>
-  <%= link_to "Edit this car", edit_car_path(@car), class: "btn btn-info" %> |
+  <%= link_to "Modifier les détails", edit_car_path(@car), class: "btn btn-info" %> |
 <% end %>
-<%# <%= button_to "Destroy this car", @car, method: :delete if policy(@car).destroy?, class: "btn btn-danger" %>
+<%= button_to "Supprimer la voiture", @car, method: :delete if policy(@car).destroy? %>

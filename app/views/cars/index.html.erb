@@ -6,20 +6,20 @@
     </button>
   </div>
 <% end %>
-
-<h1>Voitures Disponibles</h1>
-
-<ul class="d-flex">
+<br>
+<h1 class="h1 m-2">Voitures Disponibles</h1>
+<br>
+<ul class="d-flex flex-wrap m-auto">
 
 <% @cars.each do |car| %>
-<li>
-  <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="<%= car.image_url %>" alt="Card image cap">
+<li class="list-group-item">
+  <div class="card m-2 align-self-stretch" style="width: 20rem">
+    <%= image_tag car.image_url, alt: "car photo", class: "img-fluid rounded mx-auto d-block"%>
     <div class="card-body">
       <h5 class="card-title"><%= car.model %></h5>
       <p><%= car.brand %></p>
       <p class="card-text"><%= car.description %></p>
-      <%= link_to 'details', car_path(car) %>
+      <%= link_to "Voir +", car_path(car), class: "btn btn-success" %>
     </div>
   </div>
 </li>
