@@ -12,4 +12,4 @@ image : <%= @car.image_url %>
 <% if policy(@car).edit? %>
   <%= link_to "Edit this car", edit_car_path(@car), class: "btn btn-info" %> |
 <% end %>
-<%# <%= button_to "Destroy this car", @car, method: :delete if policy(@car).destroy?, class: "btn btn-danger" %> %>
+<%# <%= button_to "Destroy this car", @car, method: :delete if policy(@car).destroy?, class: "btn btn-danger" %>
