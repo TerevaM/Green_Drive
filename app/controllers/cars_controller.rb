@@ -1,5 +1,5 @@
 class CarsController < ApplicationController
-  before_action :set_car, only: %I[show update destroy]
+  before_action :set_car, only: %I[show edit update destroy]
   skip_before_action :authenticate_user!, only: :index
 
   def index
@@ -32,6 +32,12 @@ class CarsController < ApplicationController
 
   def update
     authorize @car
+    @car.update(car_params)
+    if @car.save
+      redirect_to cars_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
