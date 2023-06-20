@@ -1,5 +1,12 @@
 <h1>Voitures Disponibles</h1>
+<ul class="d-flex flex-column">
+
 <% @cars.each do |car| %>
-<%= car.brand car.model %>
-<%= car.user  %>
+<li>
+<%= car.brand %>
+<%= car.model %>
+<%= car.user.email  %>
+</li>
 <% end %>
+
+</ul>

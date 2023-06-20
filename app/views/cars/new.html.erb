@@ -1,2 +1,22 @@
 <h1>Cars#new</h1>
 <p>Find me in app/views/cars/new.html.erb</p>
+<% if current_user %>
+  <%= form_with model: @car do |f| %>
+    <%= f.label :model %>
+    <%= f.text_field :model %>
+    <%= f.label :availability %>
+    <%= f.text_field :availability %>
+    <%= f.label :brand %>
+    <%= f.text_field :brand %>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+    <%# changer l'image url en download image %>
+    <%= f.label :image_url %>
+    <%= f.text_field :image_url %>
+    <%= f.submit %>
+  <%
+    end
+  else
+    puts 'Connecte toi avant !'
+  end
+  %>

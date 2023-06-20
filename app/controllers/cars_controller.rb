@@ -1,28 +1,5 @@
 class CarsController < ApplicationController
-<<<<<<< HEAD
-  before_action :set_cars, only: %I[edit update destroy]
-
-  def edit; end
-
-  def update
-    @car.update(car_params)
-    redirect_to car_path(@car)
-  end
-
-  def destroy
-    @car.destroy
-    redirect_to cars_path, status: :see_other
-  end
-
-  private
-
-  def set_cars
-    @cars = Cars.find(params[:id])
-  end
-
-  def cars_params
-    params.require(:cars).permit(:model, :user, :availability, :brand, :description, :image_url)
-=======
+  before_action :set_car, only: %I[show update destroy]
   def index
     @cars = Car.all
   end
@@ -31,9 +8,35 @@ class CarsController < ApplicationController
   end
 
   def new
+    @car = Car.new
+  end
+
+  def create
+    @car = Car.new(car_params)
+    @car.user = current_user
+    if @car.save
+      redirect_to cars_path
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
   end
 
   def update
->>>>>>> 6516a75fe16cb2a315b8da5b13f3933a7ac2487d
+  end
+
+  def destroy
+  end
+
+  private
+
+  def set_car
+    @car = Car.find(params[:id])
+  end
+
+  def car_params
+    params.require(:car).permit(:model, :user, :availability, :brand, :description, :image_url)
   end
 end
