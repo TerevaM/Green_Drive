@@ -19,7 +19,7 @@ class CarsController < ApplicationController
     @car = Car.new(car_params)
     @car.user = current_user
     authorize @car
-    if @car.save
+    if @car.save!
       redirect_to cars_path
     else
       render :new, status: :unprocessable_entity
@@ -33,7 +33,7 @@ class CarsController < ApplicationController
   def update
     authorize @car
     @car.update(car_params)
-    if @car.save
+    if @car.save!
       redirect_to cars_path
     else
       render :new, status: :unprocessable_entity
