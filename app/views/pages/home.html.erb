@@ -1,7 +1,16 @@
-<header>
-<h1>
-Green Drive
-</h1>
-<h5>The first renting platform for electric cars </h5>
-<%= render 'form' %>
-</header>
+<section>
+  <h1> Green Drive </h1>
+  <h5>The first renting platform for electric cars </h5>
+  <%= render 'form' %>
+</section>
+
+<section>
+<h5>Rentable cars</h5>
+  <ul class="green_drive_list_cards">
+    <% @cars.each do |car| %>
+    <li class="list-group-item green_drive_card">
+      <img src="<%= car.image_url %>" alt="">
+    </li>
+    <% end %>
+  </ul>
+</section>
