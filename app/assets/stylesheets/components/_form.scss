@@ -1,0 +1,24 @@
+.form-container {
+  form {
+    margin: 50px;
+    input, textarea {
+      border-radius: 10px;
+      padding: 10px;
+      border: 1px solid $light-grey;
+
+      &:focus {
+        outline: none;
+        border-color: $dark-green;
+      }
+    }
+  }
+  .btn-success {
+    background-color: $dark-green;
+    border-color: $dark-green;
+
+    &:hover {
+      background-color: darken($dark-green, 10%);
+      border-color: darken($dark-green, 10%);
+    }
+  }
+}

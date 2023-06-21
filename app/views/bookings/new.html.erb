@@ -1,17 +1,34 @@
 <div class="container">
   <div class="row">
+<div class="col-md-12">
+  <h2>Votre réservation sélectionnée</h2>
+  <p>Marque: <%= @car.brand %></p>
+  <p>Modèle: <%= @car.model %></p>
+  <p>Couleur: <%= @car.color %></p>
+  <p>Ville: <%= @car.location %></p>
+  <p>Année de construction: <%= @car.year %></p>
+  <p>Nombre de sièges: <%= @car.number_of_seats %></p>
+  <p>Description: <%= @car.description %></p>
+  <p>Prix par jour : <%= number_to_currency(@car.rate, unit: "€") %></p>
+  <p id="total_price">Prix total: </p> <!-- Ce champ sera rempli plus tard avec JavaScript -->
+</div>
+  </div>
+
+  <div class="row">
     <div class="col-md-6">
       <h1>Ajouter une nouvelle réservation</h1>
-      <%= render 'form' %>
+      <div class="form-container">
+        <%= render 'form' %>
+      </div>
     </div>
     <div class="col-md-6">
-      <!-- Placeholder for car image -->
+      <!-- Placeholder pour l'image de la voiture -->
       <%= image_tag @car.image_url, alt: @car.model, class: "img-fluid" if @car.image_url.present? %>
 
-      <!-- Car details go here -->
+      <!-- Détails de la voiture ici -->
       <h2><%= @car.brand %> <%= @car.model %></h2>
       <p><%= @car.description %></p>
-      <!-- add more details as per your car model -->
+      <!-- ajouter plus de détails selon votre modèle de voiture -->
     </div>
   </div>
 </div>
