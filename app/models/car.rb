@@ -9,4 +9,5 @@ class Car < ApplicationRecord
   validates :availability, presence: true
   validates :brand, presence: true
   validates :description, presence: true
+  validates :photo, presence: true
 end
