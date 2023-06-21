@@ -1,0 +1,30 @@
+footer {
+  display: flex;
+  height: 50px;
+  width: 100%;
+  background-color: $light-green;
+  .links {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    border: red 1px solid;
+    a {
+      border-radius: 30px;
+      padding: 5px 10px;
+      color: $dark-green;
+      text-transform: capitalize;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.5s;
+      &:hover {
+        color: $light-green;
+        background-color: $dark-green;
+        transition: all 0.5s;
+      }
+    }
+  }
+}
+
+body {
+  margin: 0;
+}
