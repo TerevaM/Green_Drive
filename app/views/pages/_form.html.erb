@@ -1,0 +1,7 @@
+  <%= form_with model: @car do |f| %>
+    <%= f.label :model %>
+    <%= f.text_field :model %>
+    <%= f.label :availability %>
+    <%= f.text_field :availability %>
+    <%= f.submit %>
+  <% end %>
