@@ -1,21 +1,21 @@
-<h1>Booking Details</h1>
+<h1>New Booking</h1>
 
-<p>
-  <strong>Start date:</strong>
-  <%= @booking.start_date %>
-</p>
+<%= form_for [@car, @booking] do |f| %>
 
-<p>
-  <strong>End date:</strong>
-  <%= @booking.end_date %>
-</p>
+  <div class="field">
+    <%= f.label :start_date %>
+    <%= f.date_field :start_date %>
+  </div>
 
-<p>
-  <strong>Car:</strong>
-  <%= @car.model %> by <%= @car.brand %>
-</p>
+  <div class="field">
+    <%= f.label :end_date %>
+    <%= f.date_field :end_date %>
+  </div>
 
-<p>
-  <strong>User:</strong>
-  <%= current_user.email %>
-</p>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
+
+<%= link_to 'Back', car_path(@car) %>
