@@ -1,20 +1,17 @@
 <h1><%= @car.brand %>, <%= @car.model %></h1>
 
 <p>
- <%= image_tag @car.image_url, alt: "car photo", class: "img-fluid rounded mx-auto"%>
+<%= cl_image_tag @car.photo.key, height: 300, width: 400, crop: :fill %>
 
 
-
- <%= @car.number_of_seats %> seats
- <%= @car.year %>
- <%= @car.location %>
- <%= @car.rate %>€/jour
-
+ <%= @car.number_of_seats %> sièges  |  <%= @car.year %> |  <%= @car.location %> | <%= @car.rate %>€/jour
+<br>
  Voiture de: <%= @car.user.first_name %>
+ <br>
 <%= @car.description %></p>
 
 <% if current_user %>
-  <%= link_to 'Réserver maintenant', new_car_booking_path(@car), class: 'btn btn-primary' %>
+  <%= link_to 'Réserver maintenant', new_car_booking_path(@car), class: 'btn btn-success' %> |
 <% end %>
 
 <%# RAJOUTER ICI LES REVIEWS %>
@@ -22,6 +19,4 @@
 
 
 <% if policy(@car).edit? %>
-  <%= link_to "Modifier les détails", edit_car_path(@car), class: "btn btn-info" %> |
-<% end %>
-<%= button_to "Supprimer la voiture", @car, method: :delete if policy(@car).destroy? %>
+  <%= link_to "Modifier les détails", edit_car_path(@car), class: "btn btn-info" %> | <% end %> <br> <%= button_to "Supprimer la voiture", @car,class: "btn btn-danger", method: :delete if policy(@car).destroy?    %>
