@@ -14,12 +14,11 @@
 <% @cars.each do |car| %>
 <li class="list-group-item green_drive_card">
       <%= cl_image_tag car.photo.key %>
-    <%# <%= image_tag car.image_url, alt: "car photo", %>
     <div class="card-body">
       <h5 class="card-title"><%= car.model %> <%= car.brand %></h5>
       <p><%= car.location %></p>
-      <p class="card-text"><%= car.rate%>€/jour</p>
-      <%= link_to "Voir +", car_path(car), class: "btn btn-success" %>
+      <p class="card-text"><%= car.rate%>€/jour
+      <%= link_to "Voir +", car_path(car), class: "btn btn-success" %></p>
   </div>
 </li>
 <% end %>

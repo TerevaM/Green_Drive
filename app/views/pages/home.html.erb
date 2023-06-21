@@ -9,15 +9,19 @@
 <section>
 <h5>Voitures de location</h5>
   <ul class="green_drive_list_cards">
-    <% @cars.each do |car| %>
-    <li class="list-group-item">
-    <a href="<%= car_path(car)%>">
-    <div class="green_drive_card">
-      <%= cl_image_tag car.photo.key, height: 300, width: 400, crop: :fill %>
-      <h6><%= car.model %></h6>
-    </div>
-    </a>
-    </li>
-    <% end %>
-  </ul>
+
+<% @cars.each do |car| %>
+<li class="list-group-item green_drive_card">
+      <%= cl_image_tag car.photo.key %>
+    <div class="card-body">
+      <h5 class="card-title"><%= car.model %> <%= car.brand %></h5>
+      <div class="card-body-text">
+      <p><i class="fa-solid fa-location-dot"></i> <%= car.location %></p>
+      <p class="card-text"><%= car.rate%>€/jour
+      <%= link_to "Voir +", car_path(car), class: "btn btn-success" %></p>
+  </div>
+</li>
+<% end %>
+
+</ul>
 </section>

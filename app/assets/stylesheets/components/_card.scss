@@ -16,3 +16,10 @@ $card_size: 350px;
     }
   }
 }
+
+.card-body-text{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2em;
+}
