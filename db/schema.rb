@@ -51,6 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_21_115943) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "message"
     t.index ["car_id"], name: "index_bookings_on_car_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
