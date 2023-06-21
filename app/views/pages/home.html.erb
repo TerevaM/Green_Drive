@@ -13,7 +13,7 @@
     <li class="list-group-item">
     <a href="<%= car_path(car)%>">
     <div class="green_drive_card">
-      <img src="<%= car.image_url %>" alt="">
+      <%= cl_image_tag @car.photo.key, height: 300, width: 400, crop: :fill %>
       <h6><%= car.model %></h6>
     </div>
     </a>
