@@ -1,7 +1,6 @@
   <%= form_with model: @car do |f| %>
-    <%= f.label :model %>
-    <%= f.text_field :model %>
-    <%= f.date_field("start_date", min: Date.today, value: Date.today)%>
-    <%= f.date_field("end_date", min: Date.today + 1, value: Date.today + 1)%>
-    <%= f.submit %>
+    <%= f.text_field :localisation, placeholder: "Localisation" %>
+    <%= f.date_field("start_date", min: Date.today + 1, value: Date.today + 1)%>
+    <%= f.date_field("end_date", min: Date.today + 2, value: Date.today + 2)%>
+    <%= f.submit "Rechercher" %>
   <% end %>

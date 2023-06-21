@@ -1,7 +1,6 @@
 $card_size: 250px;
 
 .green_drive_list_cards {
-  background-color: red;
   display: grid;
   justify-content: space-around;
   grid-template-columns: repeat(auto-fill, $card_size);
