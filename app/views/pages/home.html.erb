@@ -1,2 +1,23 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<section class="presentation">
+<div class="home_title">
+  <h1> Green Drive </h1>
+  <h5>La première plateforme de location de voitures électriques </h5>
+</div>
+  <%= render 'form' %>
+</section>
+
+<section>
+<h5>Voitures de location</h5>
+  <ul class="green_drive_list_cards">
+    <% @cars.each do |car| %>
+    <li class="list-group-item">
+    <a href="<%= car_path(car)%>">
+    <div class="green_drive_card">
+      <img src="<%= car.image_url %>" alt="">
+      <h6><%= car.model %></h6>
+    </div>
+    </a>
+    </li>
+    <% end %>
+  </ul>
+</section>

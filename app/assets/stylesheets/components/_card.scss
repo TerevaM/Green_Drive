@@ -1,0 +1,18 @@
+$card_size: 250px;
+
+.green_drive_list_cards {
+  display: grid;
+  justify-content: space-around;
+  grid-template-columns: repeat(auto-fill, $card_size);
+  gap: 30px;
+  .green_drive_card {
+    width: $card_size;
+    height: $card_size;
+    background-color: $light-green;
+    border-radius: 0 0 10px 10px;
+    img {
+      width: 100%;
+      height: 70%;
+    }
+  }
+}
