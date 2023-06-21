@@ -11,10 +11,6 @@ require 'faker'
 Car.delete_all
 puts "delete all cars"
 User.delete_all
-<<<<<<< HEAD
-puts "delete all car"
-=======
 puts "delete all users"
->>>>>>> 6842f0a2cd69600501569bd530d7957a6c8411fc
 
 puts 'finished'
