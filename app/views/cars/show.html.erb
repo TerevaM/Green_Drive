@@ -1,22 +1,56 @@
-<h1><%= @car.brand %>, <%= @car.model %></h1>
+<main class="show">
+<h1 class="show_title"><%= @car.brand %>, <%= @car.model %></h1>
 
 <p>
-<%= cl_image_tag @car.photo.key, height: 500, width: 900, crop: :fill %>
 
-
- <%= @car.number_of_seats %> sièges  |  <%= @car.year %> |  <%= @car.location %> | <%= @car.rate %>€/jour
-<br>
- Voiture de: <%= @car.user.first_name %>
- <br>
-<%= @car.description %></p>
-
+<section class="show_card">
+<div class="pictures">
+  <div class="main_pic">
+    <%= cl_image_tag @car.photo.key %>
+  </div>
+  <div class="others_pic">
+    <%= cl_image_tag @car.photo.key %>
+    <%= cl_image_tag @car.photo.key %>
+    <%= cl_image_tag @car.photo.key %>
+    <%= cl_image_tag @car.photo.key %>
+  </div>
+</div>
+  <ul class="show_stats">
+    <li>
+     <%= @car.number_of_seats %> sièges
+    </li>
+    <li>
+      <%= @car.year %>
+    </li>
+    <li>
+      <%= @car.location %>
+    </li>
+    <li>
+      <%= @car.rate %>€/jour
+    </li>
+  </ul>
+</section>
+<div class="show_buttons">
 <% if current_user %>
   <%= link_to 'Réserver maintenant', new_car_booking_path(@car), class: 'btn btn-success' %> |
 <% end %>
+<% if policy(@car).edit? %>
+  <%= link_to "Modifier les détails", edit_car_path(@car), class: "btn btn-info" %> | <% end %> <br> <%= button_to "Supprimer la voiture", @car,class: "btn btn-danger", method: :delete if policy(@car).destroy?    %>
+</div>
+<section class="show_desc">
+<h3>Description</h3>
+<p class="show_description">
+  <%= @car.description %>
+</p>
+</section>
+
+<section class="commentaries">
+<h3>Les dernières evaluations</h3>
+
+</section>
+
 
 <%# RAJOUTER ICI LES REVIEWS %>
 <%# <h3>Les dernières évaluations</h3> %>
 
-
-<% if policy(@car).edit? %>
-  <%= link_to "Modifier les détails", edit_car_path(@car), class: "btn btn-info" %> | <% end %> <br> <%= button_to "Supprimer la voiture", @car,class: "btn btn-danger", method: :delete if policy(@car).destroy?    %>
+</main>
