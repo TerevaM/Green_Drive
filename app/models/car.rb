@@ -5,7 +5,6 @@ class Car < ApplicationRecord
   has_one_attached :photo
 
   validates :model, presence: true
-  validates :user, presence: true
   validates :brand, presence: true
   validates :description, presence: true
   validates :photo, presence: true
