@@ -1,34 +1,27 @@
 <div class="container">
-  <div class="row">
-<div class="col-md-12">
-  <h2>Votre réservation sélectionnée</h2>
-  <p>Marque: <%= @car.brand %></p>
-  <p>Modèle: <%= @car.model %></p>
-  <p>Couleur: <%= @car.color %></p>
-  <p>Ville: <%= @car.location %></p>
-  <p>Année de construction: <%= @car.year %></p>
-  <p>Nombre de sièges: <%= @car.number_of_seats %></p>
-  <p>Description: <%= @car.description %></p>
-  <p>Prix par jour : <%= number_to_currency(@car.rate, unit: "€") %></p>
-  <p id="total_price">Prix total: </p> <!-- Ce champ sera rempli plus tard avec JavaScript -->
-</div>
-  </div>
+  <div class="d-flex justify-content-between">
+    <div class="container m-4">
+      <h2 class="m-3">Vous avez selectionné la <%= @car.brand %> <%= @car.model %></h2>
+      <ul class="list-group mt-3 mb-4">
 
-  <div class="row">
-    <div class="col-md-6">
+        <li class="list-group-item">Année de construction: <%= @car.year %></li>
+        <li class="list-group-item">Couleur: <%= @car.color %></li>
+        <li class="list-group-item">Nombre de sièges: <%= @car.number_of_seats %></li>
+        <li class="list-group-item">Ville: <%= @car.location %></li>
+        <li class="list-group-item">Propriétaire: <%= @car.user.first_name %></li>
+        <li class="list-group-item">Prix : <%=@car.rate%>€/jour</li>
+        <!-- ajouter plus de détails selon votre modèle de voiture -->
+      </ul>
+      <p class="list-group-item"><%= @car.description %></p>
+      <%= cl_image_tag @car.photo.key, width: 400, height: 300, crop: :fill %>
+    </div>
+    <div class="p-2 bd-highlight">
       <h1>Ajouter une nouvelle réservation</h1>
       <div class="form-container">
         <%= render 'form' %>
       </div>
-    </div>
-    <div class="col-md-6">
-      <!-- Placeholder pour l'image de la voiture -->
-      <%= image_tag @car.image_url, alt: @car.model, class: "img-fluid" if @car.image_url.present? %>
-
-      <!-- Détails de la voiture ici -->
-      <h2><%= @car.brand %> <%= @car.model %></h2>
-      <p><%= @car.description %></p>
-      <!-- ajouter plus de détails selon votre modèle de voiture -->
+      <%# <% @total = @car.rate * ( @booking.start_date - @booking.end_date ) %>
+      <%# id="total_price">Prix total: <%= @total %> <!-- Ce champ sera rempli plus tard avec JavaScript -->
     </div>
   </div>
 </div>

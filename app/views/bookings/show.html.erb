@@ -1,21 +1,26 @@
-<h1>Booking Details</h1>
+<h1>Détails de votre réservation</h1>
 
 <p>
-  <strong>Start date:</strong>
-  <%= @booking.start_date %>
+  <strong>Date de réservation:</strong>
+  Du <%= @booking.start_date %> au <%= @booking.end_date %>
 </p>
+<p> <strong>Tarif de la période :</strong>
+<%= @booking.price %>
+</p>
+<p> <strong>Statut de votre réservation :</strong>
+<%= @booking.status %>
+</p>
+<h2> <strong>Voiture:</strong>
+  <%= @booking.car.brand %> <%= @booking.car.model %>
+</h2>
+<ul class="list-group mt-3 mb-4">
 
-<p>
-  <strong>End date:</strong>
-  <%= @booking.end_date %>
-</p>
-
-<p>
-  <strong>Car:</strong>
-  <%= @booking.car.model %> by <%= @booking.car.brand %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @booking.user.first_name %> <%= @booking.user.last_name %>
-</p>
+        <li class="list-group-item">Année de construction: <%= @booking.car.year %></li>
+        <li class="list-group-item">Couleur: <%= @booking.car.color %></li>
+        <li class="list-group-item">Nombre de sièges: <%= @booking.car.number_of_seats %></li>
+        <li class="list-group-item">Ville: <%= @booking.car.location %></li>
+        <li class="list-group-item">Propriétaire: <%= @booking.user.first_name %> <%= @booking.user.last_name %></li>
+      </ul>
+      <p class="list-group-item"><%= @car.description %></p>
+      <%= cl_image_tag @car.photo.key, width: 400, height: 300, crop: :fill %>
+    </div>
