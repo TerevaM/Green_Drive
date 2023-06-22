@@ -16,18 +16,34 @@
 <% end %>
 
 <br>
+<%# <h1 class="h1 m-2"><%=  "Nous avons trouvé #{query.results.count} voitures électriques pour vous à {query.location} pour les {query.start_date}-#{query.end_date}"%></h1>
+<br>
 
-<ul class="green_drive_list_cards">
-  <% @cars.each do |car| %>
-    <li class="list-group-item green_drive_card">
-      <%= cl_image_tag car.photo.key %>
-      <div class="card-body">
-        <h5 class="card-title"><%= car.model %> <%= car.brand %></h5>
-        <div class="card-body-text">
-          <p><i class="fa-solid fa-location-dot"></i> <%= car.location %></p>
-          <p class="card-text"><%= car.rate %>€/jour
-          <%= link_to "Voir +", car_path(car), class: "btn btn-success" %></p>
-        </div>
-      </li>
-  <% end %>
+  <ul class="green_drive_list_cards">
+<% @cars.each do |car| %>
+<li class="list-group-item green_drive_card">
+
+<!-- Slider main container -->
+<div data-controller="carousel" class="swiper-container">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <% car.photos.each do |photo| %>
+    <div class="swiper-slide">
+      <% cl_image_tag photo.key %>
+    </div>
+  </div>
+</div>
+
+      <% end %>
+    <div class="card-body">
+      <h5 class="card-title"><%= car.model %> <%= car.brand %></h5>
+      <div class="card-body-text">
+      <p><i class="fa-solid fa-location-dot"></i> <%= car.location %></p>
+      <p class="card-text"><%= car.rate%>€/jour
+      <%= link_to "Voir +", car_path(car), class: "btn btn-success" %></p>
+  </div>
+</li>
+<% end %>
 </ul>
+  
