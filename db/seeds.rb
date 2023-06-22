@@ -65,6 +65,7 @@ car_3 = Car.new(user: users_account.sample,
                 color: "Grise",
                 number_of_seats: 4,
                 location: "Vitrolles",
+                year: 2020,
                 description: "Bonjour ma Dacia Spring électrique sera parfaite pour la ville et les petits trajets en campagne.",
                 start_date: Date.new(2023,6,25) ,
                 end_date: Date.new(2023,7,25),
@@ -76,6 +77,7 @@ car_4 = Car.new(user: users_account.sample,
                 brand: "Renault",
                 color: "Banche",
                 number_of_seats: 5,
+                year: 2020,
                 location: "Marseille",
                 description: "il est interdit de fumer dans la voiture
                 pas d'animaux non plus, chargée à 100%",
@@ -90,6 +92,7 @@ car_5 = Car.new(user: users_account.sample,
                 color: "Marron",
                 location: "Aix-en-Provence",
                 number_of_seats: 9,
+                year: 2020,
                 description: "Climatisation - Régulateur de vitesse - Siège bébé- Audio Bluetooth",
                 start_date:Date.new(2023,6,25) ,
                 end_date: Date.new(2023,7,25),
@@ -102,13 +105,14 @@ car_6 = Car.new(user: users_account.sample,
                 location: "Marseille",
                 color: "Grise",
                 number_of_seats: 7,
+                year: 2020,
                 description: "Voiture idéal et confortable pour les grands trajets .
                 Vous pourrez charger sur une prise normale ou sur une borne
                 La voiture sera livrée chargée a 100% !",
                 start_date:Date.new(2023,6,25) ,
                 end_date:Date.new(2023,7,25) ,
                 rate: 90 )
-car_5.photos.attach(io: File.open('app/assets/images/peugeot-etraveller.jpg'), filename: "peugeot-etraveller.jpg")
+car_6.photos.attach(io: File.open('app/assets/images/peugeot-etraveller.jpg'), filename: "peugeot-etraveller.jpg")
 car_6.save!
 car_7 = Car.new(user: users_account.sample,
                 model: "Model Y",
@@ -116,6 +120,7 @@ car_7 = Car.new(user: users_account.sample,
                 color: "Bleue",
                 number_of_seats: 5,
                 location: "Marseille",
+                year: 2022,
                 description: "Voiture idéal et confortable pour les grands trajets .
                 Vous pourrez charger sur une prise normale ou sur une borne
                 La voiture sera livrée chargée a 100% !",
@@ -130,6 +135,7 @@ car_8 = Car.new(user: users_account.sample,
                 location: "Marseille",
                 color: "Noire",
                 number_of_seats: 5,
+                year: 2021,
                 description: "Voiture idéal et confortable pour les grands trajets .
                 Vous pourrez charger sur une prise normale ou sur une borne
                 La voiture sera livrée chargée a 100% !",
@@ -146,6 +152,7 @@ car_9 = Car.new(user: users_account.sample,
                 model: "Model S",
                 brand: "Tesla",
                 color: "Rouge",
+                year: 2020,
                 location: "Marseille",
                 number_of_seats: 5,
                 description: "Voiture idéal et confortable pour les grands trajets .
@@ -161,6 +168,7 @@ car_10 = Car.new(user: users_account.sample,
                 brand: "Hyundai",
                 color: "Bleue",
                 location: "Aubagne",
+                year: 2020,
                 number_of_seats: 5,
                 description: "Voiture idéal et confortable pour les grands trajets .
                 Vous pourrez charger sur une prise normale ou sur une borne

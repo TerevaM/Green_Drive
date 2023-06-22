@@ -1,25 +1,57 @@
+<div class="dashboard">
 <section>
-  <h1>Mes reservations à confirmer</h1>
+  <h1>Mes reservations à confirmer (<%= @requests.length %>)</h1>
   <% @requests.each do |request| %>
+
     <div class="dashboard_request_card bg-primary">
-      <%= request.start_date %>
-      <%= request.end_date %>
+      <div class="dashboard_details">
+      <div class="dashboard_date">
+      <p> debut emprunt :  <%= request.start_date %> </p>
+      <p> fin emprunt : <%= request.end_date %> </p>
+      </div>
+      <p> Nom prénom de l'emprunteur : <%= request.user.first_name %> <%= request.user.last_name %></p>
+      <p>message : <%= request.message %></p>
+        <%= link_to 'Accepter', '#', class: 'btn btn-success' %>
+        <%= link_to 'Refuser', '#', class: 'btn btn-danger' %>
+      </div>
+      <p>status : <%= request.status %></p>
+      <div class="profil">
+           <i class="fa-solid fa-user"></i>
+           <%= request.user.first_name %> <%= request.user.last_name %>
+      </div>
     </div>
   <% end %>
 </section>
 <section>
-  <h1>Mes voitures</h1>
+  <h1>Mes voitures (<%= @cars.length %>)</h1>
   <% @cars.each do |car| %>
-    <%= car.model %>
+    <p> model : <%= car.model %></p>
+    <p> marque : <%= car.brand %></p>
+    <p> nombre de places : <%= car.number_of_seats %></p>
+    <p> prix : <%= car.rate %>e/jour</p>
+    <p> color : <%= car.color %></p>
+    <p> année de sortie : <%= car.year %></p>
+    <p> description : <%= car.description %></p>
+    <p> location : <%= car.location %></p>
+    <h6>disponibilité</h6>
+    <p> debut : <%= car.start_date  %></p>
+    <p> fin : <%= car.end_date %></p>
+    <%=  %>
   <% end %>
 </section>
 <section>
-  <h1>Mes reservations</h1>
+  <h1>Mes reservations (<%= @bookings.length %>)</h1>
   <% @bookings.each do |booking| %>
+
     <div class="dashboard_request_card bg-primary">
-      <%= booking.start_date %>
-      <%= booking.end_date %>
+      <p>status : <%= booking.status %></p>
+      <p>Voiture : <%= booking.car.model %> <%= booking.car.brand %></p>
+      <p> debut emprunt :  <%= booking.start_date %> </p>
+      <p> fin emprunt : <%= booking.end_date %> </p>
+      <p> message envoyé : <%= booking.message %></p>
+      <%= link_to 'Annuler la reservation', '#', class: 'btn btn-danger' %>
     </div>
   <% end %>
 </section>
 <section></section>
+</div>
