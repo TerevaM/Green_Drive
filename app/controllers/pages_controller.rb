@@ -5,9 +5,9 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @car = Car.find(params[:id])
-    authorize @car
-    @bookings = current_user.bookings
     @cars = current_user.cars
+    @mybookings = current_user.bookings
   end
 end
+
+# Je veux tout les bookings dans lesquelles l'owner de la voiture de ces bookings est le current user
