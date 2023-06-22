@@ -11,7 +11,7 @@
   <ul class="green_drive_list_cards">
 <% @cars.each do |car| %>
 <li class="list-group-item green_drive_card">
- <%= cl_image_tag car.photos.first.key, crop: :fill %>
+<%= car.photos.attached? ? ( cl_image_tag car.photos.first.key, crop: :fill) : image_tag('tesla-model-3.jpg') %>
     <div class="card-body">
       <h5 class="card-title"><%= car.model %> <%= car.brand %></h5>
       <div class="card-body-text">

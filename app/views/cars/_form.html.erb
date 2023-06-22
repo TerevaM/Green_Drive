@@ -12,13 +12,13 @@
     </div>
 
     <div class="form-right">
-    <%= f.input :description, label: false, placeholder: 'Description' %>
+    <%= f.input :description, label: false, placeholder: 'Description', class: "form-control" %>
     <p></p>
     <%= f.input :start_date, label: 'Date de début' %>
     <%= f.input :end_date, label: 'Date de fin' %>
     <%= f.input :rate , label: false, placeholder: 'Prix par jour'%>
     <%# changer l'image url en download image %>
-    <%= f.input :photo, as: :file, input_html: { class: "form-control", required: true, multiple: true}, label: 'Ajouter vos photos' %>
+    <%= f.input :photo, as: :file, input_html: { multiple: true}, label: 'Ajouter vos photos', class: "form-control" %>
          <%# input_html: { multiple: true} %>
 
     <%= f.submit 'Enregistrer', class: "btn btn-success" %>

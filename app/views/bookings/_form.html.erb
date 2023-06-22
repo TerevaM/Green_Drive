@@ -6,5 +6,6 @@
   <%= f.input :end_date, label: 'Date de fin' %>
   <%= f.input :message, label: false , placeholder: 'Message à l\'attention du propriétaire' %>
 <%# hidden_field : :status =  pending by default %>
+<%= f.input :status, :as => "hidden", :input_html => { :value => "En attente" }%>
   <%= f.submit 'Enregistrer', class: "btn btn-success" %>
 <% end %>

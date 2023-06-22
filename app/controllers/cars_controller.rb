@@ -51,8 +51,7 @@ class CarsController < ApplicationController
 
   def destroy
     @car.destroy
-    redirect_to root_path, status: :see_other
-    ########### REDIRECT A MODIFIER VERS DASHBOARD APRES CREATION DE LA ROUTE
+    redirect_to dashboard_path, status: :see_other, notice: "Votre voiture a bien été supprimée"
     authorize @car
   end
 
