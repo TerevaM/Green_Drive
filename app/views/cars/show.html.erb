@@ -6,11 +6,7 @@
 <section class="show_card">
 <div class="pictures">
   <div class="main_pic">
-     <% if !@car.photos.empty? %>
-  <%= cl_image_tag @car.photos.first.key, crop: :fill %>
-  <% else %>
-    no Image
-    <% end %>
+    <%= @car.photos.attached? ? ( cl_image_tag @car.photos.first.key, crop: :fill) : image_tag('nowallpaper.jpg') %>
    </div>
   <div class="others_pic">
     <% @car.photos.drop(1).each do |photo| %>
@@ -42,7 +38,13 @@
   <%= link_to 'Réserver maintenant', new_car_booking_path(@car), class: 'btn btn-success' %>
 <% end %>
 <% if policy(@car).edit? %>
+<<<<<<< HEAD
   <%= link_to "Modifier les détails", edit_car_path(@car), class: "btn btn-info" %> <% end %> <%= button_to "Supprimer la voiture", @car,class: "btn btn-danger", method: :delete if policy(@car).destroy?    %>
+=======
+  <%= link_to "Modifier les détails", edit_car_path(@car), class: "btn btn-info" %> |
+   <% end %>
+   <%= button_to "Supprimer la voiture", @car, class: "btn btn-danger", method: :delete if policy(@car).destroy? %>
+>>>>>>> master
 </div>
 <section class="show_desc">
 <h3>Description</h3>

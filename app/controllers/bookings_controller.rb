@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: %i[show edit update destroy]
-  before_action :set_car, only: %i[new create show]
+  before_action :set_booking, only: %i[show edit update destroy status!]
+  before_action :set_car, only: [:new, :create, :show, :update]
 
   def index
     @bookings = Booking.all
@@ -26,25 +26,27 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     authorize @booking
     if @booking.save!
-      redirect_to @booking, notice: "Booking was successfully created."
+      redirect_to dashboard_path, notice: "Votre demande de réservation a été envoyée à #{@car.user.first_name}"
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def update
+    @booking.status = "Confirmée"
     authorize @booking
-    if @booking.update(booking_params)
-      redirect_to dashboard_path, notice: "Booking was successfully updated."
-    else
-      render :edit, status: :unprocessable_entity
-    end
+    @booking.update
+    redirect_to dashboard_path, notice: "Votre réservation a bien été validée."
   end
 
   def destroy
     @booking.destroy
     authorize @booking
-    redirect_to bookings_url, notice: "Booking was successfully destroyed."
+    redirect_to dashboard_path, notice: "La réservation a bien été annulée"
+  end
+
+  def status!
+    @booking.status = "Confirmée"
   end
 
   def status
@@ -62,6 +64,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :message)
+    params.require(:booking).permit(:start_date, :end_date, :message, :status)
   end
 end

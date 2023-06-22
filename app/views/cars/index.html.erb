@@ -7,11 +7,7 @@
 <ul class="green_drive_list_cards">
 <% @cars.each do |car| %>
   <li class="list-group-item green_drive_card">
-   <% if !car.photos.empty? %>
-  <%= cl_image_tag car.photos.first.key, crop: :fill %>
-  <% else %>
-  No Image
-  <% end %>
+ <%= car.photos.attached? ? ( cl_image_tag car.photos.first.key, crop: :fill) : image_tag('nowallpaper.jpg') %>
   <div class="card-body">
       <h5 class="card-title"><%= car.model %> <%= car.brand %></h5>
       <div class="card-body-text">
