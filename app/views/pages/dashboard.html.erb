@@ -1,9 +1,10 @@
 <div class="dashboard">
 <section>
   <h1>Mes reservations à confirmer (<%= @requests.length %>)</h1>
+  <% if !@requests.empty? %>
   <% @requests.each do |request| %>
 
-    <div class="dashboard_request_card bg-primary">
+    <div class="dashboard_card bg-primary">
       <div class="dashboard_details">
       <div class="dashboard_date">
       <p> debut emprunt :  <%= request.start_date %> </p>
@@ -21,9 +22,13 @@
       </div>
     </div>
   <% end %>
+  <% else %>
+    <p>Aucune réservation actuellement</p>
+  <% end %>
 </section>
 <section>
   <h1>Mes voitures (<%= @cars.length %>)</h1>
+   <% if !@cars.empty? %>
   <% @cars.each do |car| %>
     <p> model : <%= car.model %></p>
     <p> marque : <%= car.brand %></p>
@@ -38,12 +43,16 @@
     <p> fin : <%= car.end_date %></p>
     <%=  %>
   <% end %>
+  <% else %>
+      <p>Aucune voiture enregistré pour le moment</p>
+  <% end %>
 </section>
 <section>
   <h1>Mes reservations (<%= @bookings.length %>)</h1>
+   <% if !@bookings.empty? %>
   <% @bookings.each do |booking| %>
 
-    <div class="dashboard_request_card bg-primary">
+    <div class="dashboard_card dashboard_mybooking_card bg-primary">
       <p>status : <%= booking.status %></p>
       <p>Voiture : <%= booking.car.model %> <%= booking.car.brand %></p>
       <p> debut emprunt :  <%= booking.start_date %> </p>
@@ -51,6 +60,9 @@
       <p> message envoyé : <%= booking.message %></p>
       <%= link_to 'Annuler la reservation', '#', class: 'btn btn-danger' %>
     </div>
+  <% end %>
+  <% else %>
+      <p>Aucune réservation actuellement</p>
   <% end %>
 </section>
 <section></section>

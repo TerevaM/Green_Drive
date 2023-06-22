@@ -9,7 +9,7 @@
     <%= cl_image_tag @car.photos.first.key %>
    </div>
   <div class="others_pic">
-    <% @car.photos.each do |photo| %>
+    <% @car.photos.drop(1).each do |photo| %>
       <%= cl_image_tag photo.key, crop: :fill %>
     <% end %>
   </div>
@@ -31,10 +31,10 @@
 </section>
 <div class="show_buttons">
 <% if current_user %>
-  <%= link_to 'Réserver maintenant', new_car_booking_path(@car), class: 'btn btn-success' %> |
+  <%= link_to 'Réserver maintenant', new_car_booking_path(@car), class: 'btn btn-success' %>
 <% end %>
 <% if policy(@car).edit? %>
-  <%= link_to "Modifier les détails", edit_car_path(@car), class: "btn btn-info" %> | <% end %> <br> <%= button_to "Supprimer la voiture", @car,class: "btn btn-danger", method: :delete if policy(@car).destroy?    %>
+  <%= link_to "Modifier les détails", edit_car_path(@car), class: "btn btn-info" %> <% end %> <%= button_to "Supprimer la voiture", @car,class: "btn btn-danger", method: :delete if policy(@car).destroy?    %>
 </div>
 <section class="show_desc">
 <h3>Description</h3>
