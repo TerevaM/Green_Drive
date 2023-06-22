@@ -22,5 +22,5 @@
         <li class="list-group-item">Propriétaire: <%= @booking.user.first_name %> <%= @booking.user.last_name %></li>
       </ul>
       <p class="list-group-item"><%= @car.description %></p>
-      <%= cl_image_tag @car.photo.key, width: 400, height: 300, crop: :fill %>
+      <%# <%= cl_image_tag @car.photo.key, width: 400, height: 300, crop: :fill %>
     </div>

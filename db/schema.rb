@@ -61,12 +61,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_21_115943) do
     t.integer "number_of_seats"
     t.bigint "user_id", null: false
     t.integer "rate"
-    t.string "availability"
     t.string "brand"
     t.string "color"
     t.integer "year"
     t.string "description"
-    t.string "image_url"
+    t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "location"

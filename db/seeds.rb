@@ -7,6 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 require "open-uri"
+require "date"
 
 require 'faker'
 
@@ -14,35 +15,6 @@ Car.delete_all
 puts "delete all cars"
 User.delete_all
 puts "delete all users"
-
-rand_mail = ['gmail', 'yahoo', 'free']
-5.times do
-  first_name_user = Faker::Name.first_name
-  last_name_user = Faker::Name.last_name
-  new_user = User.new(email: "#{first_name_user}.#{last_name_user}@#{rand_mail.sample}.fr",
-                      first_name: first_name_user,
-                      last_name: last_name_user,
-                      password: "#{first_name_user}#{last_name_user}123")
-  new_user.save!
-  rand(2..5).times do
-    start_date = rand(0..31)
-    end_date = start_date + rand(0..60)
-    make_and_model = Faker::Vehicle.make_and_model.split
-    color_name = Faker::Color.color_name
-    car_new = Car.new(user: new_user,
-                      model: make_and_model[0],
-                      brand: make_and_model[1],
-                      color: color_name,
-                      year: Faker::Vehicle.year,
-                      number_of_seats: rand(2..9),
-                      description: Faker::Lorem.paragraphs(number: rand(2..4)),
-                      start_date: Date.new + start_date,
-                      end_date: Date.new + end_date,
-                      rate: rand(45..130))
-    # car_new.photo.attach(io: file, filename: , content_type: "image/png")
-    car_new.save!
-  end
-end
 
 users_account = []
 5.times do
@@ -56,115 +28,147 @@ users_account = []
   users_account << new_user
   new_user.save!
 end
+puts "Created 5 users"
 car_1 = Car.new(user: users_account.sample,
-                model: ,
-                brand: ,
-                color: ,
-                number_of_seats: ,
-                description: ,
-                start_date: ,
-                end_date: ,
-                rate: ,
-                photo: )
+                model: "e-Niro",
+                brand: "Kia",
+                color: "Grise",
+                number_of_seats: 5,
+                location: "Marseille",
+                description: "Notre E-niro est une voiture idéal et confortable pour les grands trajets .
+                Vous pourrez charger sur une prise normale ou sur une borne
+                La voiture sera livrée chargée a 100% !",
+                start_date: Date.new(2023,6,25) ,
+                end_date: Date.new(2023,7,25) ,
+                rate: 90)
+car_1.photos.attach(io: File.open('app/assets/images/kia-e-niro.jpg'), filename: "kia-e-niro")
 car_1.save!
 car_2 = Car.new(user: users_account.sample,
-                model: ,
-                brand: ,
-                color: ,
-                number_of_seats: ,
-                description: ,
-                start_date: ,
-                end_date: ,
-                rate: ,
-                photo: )
+                model: "Ami",
+                brand: "Citroën",
+                color: "Bleue",
+                location: "Marseille",
+                number_of_seats: 2,
+                description: "Super agréable et pratique pour se garer - 5000kms au compteur",
+                start_date: Date.new(2023,6,25) ,
+                end_date: Date.new(2023,7,25),
+                rate: 60)
+car_2.photos.attach(io: File.open('app/assets/images/citroen-ami.jpg'), filename: "citroen-ami.jpg")
+car_2.photos.attach(io: File.open('app/assets/images/citroen-ami_a.jpg'), filename: "citroen-ami_a.jpg")
+car_2.photos.attach(io: File.open('app/assets/images/citroen-ami_b.jpg'), filename: "citroen-ami_b.jpg")
+car_2.photos.attach(io: File.open('app/assets/images/citroen-ami_c.jpg'), filename: "citroen-ami_c.jpg")
+car_2.photos.attach(io: File.open('app/assets/images/citroen-ami_d.jpg'), filename: "citroen-ami_d.jpg")
 car_2.save!
 car_3 = Car.new(user: users_account.sample,
-                model: ,
-                brand: ,
-                color: ,
-                number_of_seats: ,
-                description: ,
-                start_date: ,
-                end_date: ,
-                rate: ,
-                photo: )
+                model: "Spring",
+                brand: "Dacia",
+                color: "Grise",
+                number_of_seats: 4,
+                location: "Vitrolles",
+                description: "Bonjour ma Dacia Spring électrique sera parfaite pour la ville et les petits trajets en campagne.",
+                start_date: Date.new(2023,6,25) ,
+                end_date: Date.new(2023,7,25),
+                rate: 75)
+car_3.photos.attach(io: File.open('app/assets/images/Dacia-spring.jpg'), filename: "dacia-spring.jpg")
 car_3.save!
 car_4 = Car.new(user: users_account.sample,
-                model: ,
-                brand: ,
-                color: ,
-                number_of_seats: ,
-                description: ,
-                start_date: ,
-                end_date: ,
-                rate: ,
-                photo: )
+                model: "ZOE",
+                brand: "Renault",
+                color: "Banche",
+                number_of_seats: 5,
+                location: "Marseille",
+                description: "il est interdit de fumer dans la voiture
+                pas d'animaux non plus, chargée à 100%",
+                start_date: Date.new(2023,6,25),
+                end_date: Date.new(2023,7,25),
+                rate: 65)
+car_4.photos.attach(io: File.open('app/assets/images/Renault-Zoe.jpg'), filename: "renault-zoe.jpg")
 car_4.save!
 car_5 = Car.new(user: users_account.sample,
-                model: ,
-                brand: ,
-                color: ,
-                number_of_seats: ,
-                description: ,
-                start_date: ,
-                end_date: ,
-                rate: ,
-                photo: )
+                model: "e-Space Tourer",
+                brand: "Citroën",
+                color: "Marron",
+                location: "Aix-en-Provence",
+                number_of_seats: 9,
+                description: "Climatisation - Régulateur de vitesse - Siège bébé- Audio Bluetooth",
+                start_date:Date.new(2023,6,25) ,
+                end_date: Date.new(2023,7,25),
+                rate: 120)
+car_5.photos.attach(io: File.open('app/assets/images/citroen-espace-tourer.jpg'), filename: "citroen-espace-tourer.jpg")
 car_5.save!
 car_6 = Car.new(user: users_account.sample,
-                model: ,
-                brand: ,
-                color: ,
-                number_of_seats: ,
-                description: ,
-                start_date: ,
-                end_date: ,
-                rate: ,
-                photo: )
+                model: "e-Traveller",
+                brand: "Peugeot",
+                location: "Marseille",
+                color: "Grise",
+                number_of_seats: 7,
+                description: "Voiture idéal et confortable pour les grands trajets .
+                Vous pourrez charger sur une prise normale ou sur une borne
+                La voiture sera livrée chargée a 100% !",
+                start_date:Date.new(2023,6,25) ,
+                end_date:Date.new(2023,7,25) ,
+                rate: 90 )
+car_5.photos.attach(io: File.open('app/assets/images/peugeot-etraveller.jpg'), filename: "peugeot-etraveller.jpg")
 car_6.save!
 car_7 = Car.new(user: users_account.sample,
-                model: ,
-                brand: ,
-                color: ,
-                number_of_seats: ,
-                description: ,
-                start_date: ,
-                end_date: ,
-                rate: ,
-                photo: )
+                model: "Model Y",
+                brand: "Tesla",
+                color: "Bleue",
+                number_of_seats: 5,
+                location: "Marseille",
+                description: "Voiture idéal et confortable pour les grands trajets .
+                Vous pourrez charger sur une prise normale ou sur une borne
+                La voiture sera livrée chargée a 100% !",
+                start_date: Date.new(2023,6,25),
+                end_date:Date.new(2023,7,25) ,
+                rate: 100)
+car_7.photos.attach(io: File.open('app/assets/images/tesla-model-y.jpg'), filename: "tesla-model-y.jpg")
 car_7.save!
 car_8 = Car.new(user: users_account.sample,
-                model: ,
-                brand: ,
-                color: ,
-                number_of_seats: ,
-                description: ,
-                start_date: ,
-                end_date: ,
-                rate: ,
-                photo: )
+                model: "Model 3",
+                brand: "Tesla",
+                location: "Marseille",
+                color: "Noire",
+                number_of_seats: 5,
+                description: "Voiture idéal et confortable pour les grands trajets .
+                Vous pourrez charger sur une prise normale ou sur une borne
+                La voiture sera livrée chargée a 100% !",
+                start_date: Date.new(2023,6,25),
+                end_date: Date.new(2023,7,25),
+                rate: 90)
+car_8.photos.attach(io: File.open('app/assets/images/tesla-model-3.jpg'), filename: "tesla-model-3.jpg")
+car_8.photos.attach(io: File.open('app/assets/images/tesla-model-3_a.jpg'), filename: "tesla-model-3_a.jpg")
+car_8.photos.attach(io: File.open('app/assets/images/tesla-model-3_b.jpg'), filename: "tesla-model-3_b.jpg")
+car_8.photos.attach(io: File.open('app/assets/images/tesla-model-3_c.jpg'), filename: "tesla-model-3_c.jpg")
+car_8.photos.attach(io: File.open('app/assets/images/tesla-model-3_d.jpg'), filename: "tesla-model-3_d.jpg")
 car_8.save!
 car_9 = Car.new(user: users_account.sample,
-                model: ,
-                brand: ,
-                color: ,
-                number_of_seats: ,
-                description: ,
-                start_date: ,
-                end_date: ,
-                rate: ,
-                photo: )
+                model: "Model S",
+                brand: "Tesla",
+                color: "Rouge",
+                location: "Marseille",
+                number_of_seats: 5,
+                description: "Voiture idéal et confortable pour les grands trajets .
+                Vous pourrez charger sur une prise normale ou sur une borne
+                La voiture sera livrée chargée a 100% !",
+                start_date: Date.new(2023,6,25),
+                end_date:Date.new(2023,7,25) ,
+                rate: 95 )
+car_9.photos.attach(io: File.open('app/assets/images/tesla-model-s.jpg'), filename: "tesla-model-s.jpg")
 car_9.save!
 car_10 = Car.new(user: users_account.sample,
-                model: ,
-                brand: ,
-                color: ,
-                number_of_seats: ,
-                description: ,
-                start_date: ,
-                end_date: ,
-                rate: ,
-                photo: )
+                model: "Kona",
+                brand: "Hyundai",
+                color: "Bleue",
+                location: "Aubagne",
+                number_of_seats: 5,
+                description: "Voiture idéal et confortable pour les grands trajets .
+                Vous pourrez charger sur une prise normale ou sur une borne
+                La voiture sera livrée chargée a 100% !",
+                start_date:Date.new(2023,6,25) ,
+                end_date: Date.new(2023,7,25),
+                rate: 90 )
+car_10.photos.attach(io: File.open('app/assets/images/hyundai-kona.jpg'), filename: "hyundai-kona.jpg")
 car_10.save!
-
+puts "created 10 cars"
 puts 'finished'
