@@ -8,4 +8,8 @@ class Car < ApplicationRecord
   validates :brand, presence: true
   validates :description, presence: true
   validates :photo, presence: true
+
+  def self.ransackable_attributes(_ = nil)
+    %w[location start_date end_date]
+  end
 end
