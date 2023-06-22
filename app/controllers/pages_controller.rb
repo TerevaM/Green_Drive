@@ -5,8 +5,6 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @car = Car.find(params[:id])
-    authorize @car
     @bookings = current_user.bookings
     @cars = current_user.cars
   end
