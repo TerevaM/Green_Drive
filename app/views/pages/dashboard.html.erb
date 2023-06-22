@@ -1,55 +1,73 @@
 <div class="dashboard">
 <section>
-  <h1>Mes reservations à confirmer (<%= @requests.length %>)</h1>
+  <h1>Mes réservations à confirmer (<%= @requests.length %>)</h1>
   <% @requests.each do |request| %>
 
     <div class="dashboard_request_card bg-primary">
       <div class="dashboard_details">
       <div class="dashboard_date">
-      <p> debut emprunt :  <%= request.start_date %> </p>
-      <p> fin emprunt : <%= request.end_date %> </p>
+      <p> Début de l'emprunt :  <%= request.start_date %> </p>
+      <p> Fin de l'emprunt : <%= request.end_date %> </p>
       </div>
-      <p> Nom prénom de l'emprunteur : <%= request.user.first_name %> <%= request.user.last_name %></p>
-      <p>message : <%= request.message %></p>
-        <%= link_to 'Accepter', '#', class: 'btn btn-success' %>
-        <%= link_to 'Refuser', '#', class: 'btn btn-danger' %>
+      <p class="profil">
+        Demande effectuée par : <i class="fa-solid fa-user"></i> <%= request.user.first_name %> <%= request.user.last_name %></p>
+      <p>Son message : <%= request.message %></p>
+      <%# LE BOUTON ACCEPTER NE FONCTIONNE PAS %>
+        <%= button_to 'Accepter', request, class: "btn btn-success", method: :update if policy(request.car).update? %>
+        <%= button_to 'Refuser', request, class: "btn btn-danger", method: :delete if policy(request.car).destroy? %>
       </div>
-      <p>status : <%= request.status %></p>
-      <div class="profil">
-           <i class="fa-solid fa-user"></i>
-           <%= request.user.first_name %> <%= request.user.last_name %>
+      <p>Statut : <%= request.status %></p>
+
+    </div>
+  <% end %>
+</section>
+
+<section>
+  <h1>Mes réservations à venir (<%= @confirmed_requests.length %>)</h1>
+  <% @confirmed_requests.each do |request| %>
+
+    <div class="dashboard_request_card bg-primary">
+      <div class="dashboard_details">
+      <div class="dashboard_date">
+      <p> Début de l'emprunt :  <%= request.start_date %> </p>
+      <p> Fin de l'emprunt : <%= request.end_date %> </p>
       </div>
+      <p class="profil">
+        Demande effectuée par : <i class="fa-solid fa-user"></i> <%= request.user.first_name %> <%= request.user.last_name %></p>
+      <p>Son message : <%= request.message %></p>
+      <p>Statut : <%= request.status %></p>
+
     </div>
   <% end %>
 </section>
 <section>
   <h1>Mes voitures (<%= @cars.length %>)</h1>
   <% @cars.each do |car| %>
-    <p> model : <%= car.model %></p>
-    <p> marque : <%= car.brand %></p>
-    <p> nombre de places : <%= car.number_of_seats %></p>
-    <p> prix : <%= car.rate %>e/jour</p>
-    <p> color : <%= car.color %></p>
-    <p> année de sortie : <%= car.year %></p>
-    <p> description : <%= car.description %></p>
-    <p> location : <%= car.location %></p>
-    <h6>disponibilité</h6>
-    <p> debut : <%= car.start_date  %></p>
-    <p> fin : <%= car.end_date %></p>
-    <%=  %>
+  <%= car.photos.attached? ? ( cl_image_tag car.photos.first.key, crop: :fill) : image_tag('tesla-model-3.jpg') %>
+    <p> Modèle : <%= car.model %></p>
+    <p> Marque : <%= car.brand %></p>
+    <p> Nombre de places : <%= car.number_of_seats %></p>
+    <p> Prix : <%= car.rate %>€/jour</p>
+    <p> Couleur : <%= car.color %></p>
+    <p> Année de sortie : <%= car.year %></p>
+    <p> Description : <%= car.description %></p>
+    <p> Localisation : <%= car.location %></p>
+    <h6>Disponibilités</h6>
+    <p> Début : <%= car.start_date  %></p>
+    <p> Fin : <%= car.end_date %></p>
   <% end %>
 </section>
 <section>
-  <h1>Mes reservations (<%= @bookings.length %>)</h1>
+  <h1>Mes demandes de réservations (<%= @bookings.length %>)</h1>
   <% @bookings.each do |booking| %>
 
     <div class="dashboard_request_card bg-primary">
-      <p>status : <%= booking.status %></p>
+      <p>statut : <%= booking.status %></p>
       <p>Voiture : <%= booking.car.model %> <%= booking.car.brand %></p>
-      <p> debut emprunt :  <%= booking.start_date %> </p>
-      <p> fin emprunt : <%= booking.end_date %> </p>
-      <p> message envoyé : <%= booking.message %></p>
-      <%= link_to 'Annuler la reservation', '#', class: 'btn btn-danger' %>
+      <p> Début emprunt :  <%= booking.start_date %> </p>
+      <p> Fin emprunt : <%= booking.end_date %> </p>
+      <p> Message envoyé : <%= booking.message %></p>
+      <%= button_to 'Annuler la réservation', booking, class: "btn btn-danger", method: :delete if policy(booking).destroy? %>
     </div>
   <% end %>
 </section>
