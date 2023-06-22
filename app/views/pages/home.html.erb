@@ -1,27 +1,25 @@
 <section class="presentation">
-<div class="home_title">
-  <h1> Green Drive </h1>
-  <h5>La première plateforme de location de voitures électriques </h5>
-</div>
-  <%= render 'form' %>
+  <div class="home_title">
+    <h1> Green Drive </h1>
+    <h5>La première plateforme de location de voitures électriques </h5>
+  </div>
+  <%= render 'cars/search' %>
 </section>
 
 <section>
-<h5>Voitures de location</h5>
+  <h5>Voitures de location</h5>
   <ul class="green_drive_list_cards">
-
-<% @cars.each do |car| %>
-<li class="list-group-item green_drive_card">
-      <%= cl_image_tag car.photo.key %>
-    <div class="card-body">
-      <h5 class="card-title"><%= car.model %> <%= car.brand %></h5>
-      <div class="card-body-text">
-      <p><i class="fa-solid fa-location-dot"></i> <%= car.location %></p>
-      <p class="card-text"><%= car.rate%>€/jour
-      <%= link_to "Voir +", car_path(car), class: "btn btn-success" %></p>
-  </div>
-</li>
-<% end %>
-
-</ul>
+    <% @cars.each do |car| %>
+      <li class="list-group-item green_drive_card">
+        <%= cl_image_tag car.photo.key %>
+        <div class="card-body">
+          <h5 class="card-title"><%= car.model %> <%= car.brand %></h5>
+          <div class="card-body-text">
+            <p><i class="fa-solid fa-location-dot"></i> <%= car.location %></p>
+            <p class="card-text"><%= car.rate %>€/jour
+            <%= link_to "Voir +", car_path(car), class: "btn btn-success" %></p>
+          </div>
+        </li>
+    <% end %>
+  </ul>
 </section>
