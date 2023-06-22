@@ -5,14 +5,13 @@
 
 <section class="show_card">
 <div class="pictures">
-  <div class="main_pic">
+  <%# <div class="main_pic">
     <%= cl_image_tag @car.photo.key %>
-  </div>
+  <%# </div>  %>
   <div class="others_pic">
-    <%= cl_image_tag @car.photo.key %>
-    <%= cl_image_tag @car.photo.key %>
-    <%= cl_image_tag @car.photo.key %>
-    <%= cl_image_tag @car.photo.key %>
+    <% @car.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
   </div>
 </div>
   <ul class="show_stats">
@@ -44,10 +43,10 @@
 </p>
 </section>
 
-<section class="commentaries">
-<h3>Les dernières evaluations</h3>
+<%# <section class="commentaries">
+<h3>Les dernières evaluations</h3> %>
 
-</section>
+<%# </section> %>
 
 
 <%# RAJOUTER ICI LES REVIEWS %>
