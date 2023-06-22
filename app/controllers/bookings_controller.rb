@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
-  before_action :set_car, only: [:new, :create, :show]
+  before_action :set_car, only: %i[new create show]
 
   def index
     @bookings = Booking.all
@@ -35,7 +35,7 @@ class BookingsController < ApplicationController
   def update
     authorize @booking
     if @booking.update(booking_params)
-      redirect_to @booking, notice: "Booking was successfully updated."
+      redirect_to dashboard_path, notice: "Booking was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -45,6 +45,10 @@ class BookingsController < ApplicationController
     @booking.destroy
     authorize @booking
     redirect_to bookings_url, notice: "Booking was successfully destroyed."
+  end
+
+  def status
+    @booking.status = params[:format]
   end
 
   private

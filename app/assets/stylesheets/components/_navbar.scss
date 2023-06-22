@@ -1,3 +1,19 @@
+@keyframes RoadIn {
+  0% {
+    left: 100px;
+  }
+  30% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    left: calc(100% - 200px);
+  }
+}
+
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
@@ -12,6 +28,12 @@
 
 .green_drive_navbar {
   background-color: $light-green;
+  position: relative;
+  .car_icon {
+    position: absolute;
+    opacity: 0;
+    animation: RoadIn 20s ease-in-out infinite;
+  }
   * {
     color:$dark-green;
     font-weight: bold;

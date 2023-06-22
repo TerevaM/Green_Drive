@@ -1,36 +1,35 @@
-.presentation {
-  position: relative;
-  background-image: url("https://images.pexels.com/photos/12086491/pexels-photo-12086491.jpeg?cs=srgb&dl=pexels-kevin-burnell-12086491.jpg&fm=jpg");
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  width: 100%;
-  height: 60vh;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  flex-direction: column;
-
-  .home_title {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    color: $dark-green;
-    h1 {
-      font-family: 'Potta One', cursive;
-      font-size: 60px;
+.home {
+  .presentation {
+    position: relative;
+    background-image: url("https://images.pexels.com/photos/12086491/pexels-photo-12086491.jpeg?cs=srgb&dl=pexels-kevin-burnell-12086491.jpg&fm=jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    .home_title {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: $dark-green;
+      h1 {
+        font-family: 'Potta One', cursive;
+        font-size: 60px;
+      }
     }
-
+    form {
+      margin: 50px;
+      input {
+        border-radius: 10px;
+        padding: 10px;
+      }
+  textarea:focus, input:focus{
+    outline: none;
   }
-  form {
-    margin: 50px;
-    input {
-      border-radius: 10px;
-      padding: 10px;
     }
-
-textarea:focus, input:focus{
-  outline: none;
-}
   }
 }

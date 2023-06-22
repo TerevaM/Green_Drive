@@ -6,11 +6,19 @@
 <section class="show_card">
 <div class="pictures">
   <div class="main_pic">
-    <%= cl_image_tag @car.photos.first.key %>
+     <% if !@car.photos.empty? %>
+  <%= cl_image_tag @car.photos.first.key, crop: :fill %>
+  <% else %>
+    no Image
+    <% end %>
    </div>
   <div class="others_pic">
     <% @car.photos.drop(1).each do |photo| %>
-      <%= cl_image_tag photo.key, crop: :fill %>
+     <% if @car.photos.drop(1).empty? %>
+  <%= cl_image_tag car.photos.key, crop: :fill %>
+  <% else %>
+    no image
+    <% end %>
     <% end %>
   </div>
 </div>

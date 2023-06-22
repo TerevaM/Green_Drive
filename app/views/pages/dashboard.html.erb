@@ -12,8 +12,8 @@
       </div>
       <p> Nom prénom de l'emprunteur : <%= request.user.first_name %> <%= request.user.last_name %></p>
       <p>message : <%= request.message %></p>
-        <%= link_to 'Accepter', '#', class: 'btn btn-success' %>
-        <%= link_to 'Refuser', '#', class: 'btn btn-danger' %>
+        <%= link_to 'Accepter', status_path('accepted'), class: 'btn btn-success' %>
+        <%= link_to 'Refuser', status_path('decline'), class: 'btn btn-danger' %>
       </div>
       <p>status : <%= request.status %></p>
       <div class="profil">
