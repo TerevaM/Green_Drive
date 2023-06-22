@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
-  before_action :set_car, only: [:new, :create]
+  before_action :set_car, only: [:new, :create, :show]
 
   def index
     @bookings = Booking.all
@@ -25,7 +25,7 @@ class BookingsController < ApplicationController
     @booking.car = @car
     @booking.user = current_user
     authorize @booking
-    if @booking.save
+    if @booking.save!
       redirect_to @booking, notice: "Booking was successfully created."
     else
       render :new, status: :unprocessable_entity

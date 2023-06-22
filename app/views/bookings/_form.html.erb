@@ -4,7 +4,7 @@
 
   <%= f.input :start_date, label: 'Date de début' %>
   <%= f.input :end_date, label: 'Date de fin' %>
-  <%= f.input :message, placeholder: 'Message à l\'attention du propriétaire' %>
-
+  <%= f.input :message, label: false , placeholder: 'Message à l\'attention du propriétaire' %>
+<%# hidden_field : :status =  pending by default %>
   <%= f.submit 'Enregistrer', class: "btn btn-success" %>
 <% end %>
