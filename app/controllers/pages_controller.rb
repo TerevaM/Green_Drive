@@ -7,10 +7,6 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-<<<<<<< HEAD
-=======
-    @bookings = current_user.bookings
->>>>>>> master
     @cars = current_user.cars
     @mybookings = current_user.bookings
   end
