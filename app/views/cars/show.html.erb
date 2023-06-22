@@ -5,12 +5,12 @@
 
 <section class="show_card">
 <div class="pictures">
-  <%# <div class="main_pic">
-    <%= cl_image_tag @car.photo.key %>
-  <%# </div>  %>
+  <div class="main_pic">
+    <%= cl_image_tag @car.photos.first.key %>
+   </div>
   <div class="others_pic">
     <% @car.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <%= cl_image_tag photo.key, crop: :fill %>
     <% end %>
   </div>
 </div>

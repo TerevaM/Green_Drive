@@ -2,11 +2,10 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-// import { application } from "./application"
-import { Application } from "stimulus"
-import Carousel from 'stimulus-carousel'
+import { application } from "./application"
 
-const application = Application.start()
-application.register("carousel", Carousel)
-// import HelloController from "./hello_controller"
-// application.register("hello", HelloController)
+import CarouselController from "./carousel_controller"
+application.register("carousel", CarouselController)
+
+import HelloController from "./hello_controller"
+application.register("hello", HelloController)
