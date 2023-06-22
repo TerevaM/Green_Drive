@@ -7,8 +7,9 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @requests = Booking.joins(:car).where(cars: { user: current_user })
     @cars = current_user.cars
-    @mybookings = current_user.bookings
+    @bookings = current_user.bookings
   end
 end
 
