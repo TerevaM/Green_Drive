@@ -1,9 +1,15 @@
-<h1>Your bookings</h1>
-<% @bookings.each do |booking| %>
-  <p><%= booking.start_date %> to <%= booking.end_date %></p>
-<% end %>
-
-<h1>Your cars</h1>
-<% @cars.each do |car| %>
-  <p><%= car.model %> by <%= car.brand %></p>
-<% end %>
+<section>
+  <h1>Mes reservations à confirmer</h1>
+  <% @oeoebookings.each do |request| %>
+    <div class="dashboard_request_card bg-primary">
+      <%= request.start_date %>
+      <%= request.end_date %>
+    </div>
+  <% end %>
+</section>
+<section>
+  <% @cars.each do |car| %>
+    <%= car.model %>
+  <% end %>
+</section>
+<section></section>

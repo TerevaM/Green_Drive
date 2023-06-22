@@ -1,14 +1,24 @@
-<%= simple_form_for :search, url: root_path, method: :get do |f| %>
+<%= search_form_for @q, url: cars_path, method: :get do |f| %>
   <div class="search-form-control form-group m-2">
-    <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+    <%= f.label :location_cont, 'Location' %>
+    <%= f.search_field :location_cont, class: "form-control string required" %>
+
+    <%= f.label :start_date_gteq, 'Start date' %>
+    <%= f.date_field :start_date_gteq, class: "form-control string required" %>
+
+    <%= f.label :end_date_lteq, 'End date' %>
+    <%= f.date_field :end_date_lteq, class: "form-control string required" %>
+
     <button name="button" type="submit" class="btn btn-flat">
       <i class="fas fa-search"></i> Rechercher
     </button>
   </div>
 <% end %>
+
 <br>
 <%# <h1 class="h1 m-2"><%=  "Nous avons trouvé #{query.results.count} voitures électriques pour vous à {query.location} pour les {query.start_date}-#{query.end_date}"%></h1>
 <br>
+
   <ul class="green_drive_list_cards">
 <% @cars.each do |car| %>
 <li class="list-group-item green_drive_card">
@@ -35,5 +45,5 @@
   </div>
 </li>
 <% end %>
-
 </ul>
+  

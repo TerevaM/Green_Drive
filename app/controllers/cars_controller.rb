@@ -3,7 +3,16 @@ class CarsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    @cars = Car.all
+    @q = Car.ransack(params[:q])
+    @cars = @q.result(distinct: true)
+
+    if params[:q].present?
+      start_date = params[:q][:start_date_gteq]
+      end_date = params[:q][:end_date_lteq]
+      if start_date.present? && end_date.present?
+        @cars = @cars.joins(:bookings).where.not(bookings: { start_date: (start_date..end_date), end_date: (start_date..end_date) })
+      end
+    end
   end
 
   def show
