@@ -35,7 +35,7 @@ class BookingsController < ApplicationController
   def update
     @booking.status = "Confirmée"
     authorize @booking
-    @booking.update
+    @booking.update!
     redirect_to dashboard_path, notice: "Votre réservation a bien été validée."
   end
 
