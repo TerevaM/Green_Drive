@@ -1,18 +1,21 @@
-.dashboard {
-  padding: 0 30px;
+.container {
+  width: 65%;
+  margin: 85px auto;
+
+  .section {
+    margin: 40px 0px;
+  }
 
   h1 {
     font-family: 'Potta One', cursive;    ;
     color: $dark-green;
+    margin: 0px 0px 32px 0px;
   }
-  .dashboard_card {
-    width: 90%;
-    display: flex;
-    margin: 0 auto;
-    border-radius: 30px;
-    padding: 20px;
-    background-color: $dark-green;
+
+  .background-red {
+    background-color: #FFC8B7;
   }
+
   .dashboard_mybooking_card {
     width: 50%;
   }

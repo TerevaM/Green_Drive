@@ -3,8 +3,10 @@ $card_size: 350px;
 .green_drive_list_cards {
   display: grid;
   justify-content: space-around;
+  padding: 0;
   grid-template-columns: repeat(auto-fill, $card_size);
   gap: 30px;
+
   .green_drive_card {
     position: relative;
     width: $card_size;
