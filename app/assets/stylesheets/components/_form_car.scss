@@ -1,10 +1,16 @@
 .form-car{
-  width: 80vw;
-  margin: 2em auto;
+  width: 100%;
   display: flex;
-
+  input, select, textarea {
+    box-shadow: 1px 1px 4px rgba(87, 87, 87, 0.445);
+  }
   .form-right {
-    width : 50vw;
-    margin-left: 5em;
+    width : 50%;
+    padding: 20px;
+  }
+  .form-left {
+    textarea { resize: none; }
+    width: 50%;
+    padding: 20px;
   }
 }

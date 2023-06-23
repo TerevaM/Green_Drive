@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: %i[show edit update destroy status!]
+  before_action :set_booking, only: %i[show destroy accept]
   before_action :set_car, only: [:new, :create, :show, :update]
 
   def index
@@ -16,10 +16,6 @@ class BookingsController < ApplicationController
     authorize @booking
   end
 
-  def edit
-    authorize @booking
-  end
-
   def create
     @booking = Booking.new(booking_params)
     @booking.car = @car
@@ -31,22 +27,18 @@ class BookingsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
-  def update
-    @booking.status = "Confirmée"
-    authorize @booking
-    @booking.update
-    redirect_to dashboard_path, notice: "Votre réservation a bien été validée."
-  end
-
   def destroy
     @booking.destroy
     authorize @booking
     redirect_to dashboard_path, notice: "La réservation a bien été annulée"
   end
 
-  def status!
+  def accept
     @booking.status = "Confirmée"
+    if @booking.save!
+      redirect_to dashboard_path, notice: "Votre réservation a bien été validée."
+    end
+    authorize @booking
   end
 
   def status

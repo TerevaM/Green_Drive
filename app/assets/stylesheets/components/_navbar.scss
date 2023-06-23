@@ -30,6 +30,7 @@
   background-color: $light-green;
   position: relative;
   .car_icon {
+    z-index: -10;
     position: absolute;
     opacity: 0;
     animation: RoadIn 20s ease-in-out infinite;
