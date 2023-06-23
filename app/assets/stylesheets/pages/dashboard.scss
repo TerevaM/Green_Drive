@@ -20,3 +20,14 @@
     width: 50%;
   }
 }
+
+.dashboard_list_car {
+  background-color: red;
+  width: 100%;
+  padding: 1em;
+  gap: 20px;
+
+  .dashboard_car_card {
+    width: 80%;
+  }
+}
