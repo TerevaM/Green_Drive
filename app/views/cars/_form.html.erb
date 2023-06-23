@@ -14,10 +14,10 @@
 
     <div class="form-right">
     <%= f.input :number_of_seats, :collection => 1..9, label: 'Nombre de sièges' %>
-    <%= f.input :start_date, label: 'Date de début' %>
-    <%= f.input :end_date, label: 'Date de fin' %>
+    <%= f.input :start_date, label: 'Date de début', placeholder: "#{Date.today}", as: :string, input_html: { data: { controller: 'flatpickr' } } %>
+    <%= f.input :end_date, label: 'Date de fin', placeholder: "#{Date.today + 1}", as: :string, input_html: { data: { controller: 'flatpickr' } } %>
     <%= f.input :rate , label: false, placeholder: 'Prix par jour'%>
-    <%= f.input :photo, as: :file, input_html: { multiple: true}, label: 'Ajouter vos photos', class: "form-control" %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true}, label: 'Ajouter vos photos', class: "form-control" %>
 
     <%= f.submit 'Enregistrer', class: "btn btn-success" %>
     </div>
