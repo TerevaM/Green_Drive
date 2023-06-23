@@ -17,9 +17,7 @@
     <%= f.input :start_date, label: 'Date de début' %>
     <%= f.input :end_date, label: 'Date de fin' %>
     <%= f.input :rate , label: false, placeholder: 'Prix par jour'%>
-    <%# changer l'image url en download image %>
     <%= f.input :photo, as: :file, input_html: { multiple: true}, label: 'Ajouter vos photos', class: "form-control" %>
-         <%# input_html: { multiple: true} %>
 
     <%= f.submit 'Enregistrer', class: "btn btn-success" %>
     </div>
