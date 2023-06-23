@@ -21,27 +21,24 @@
     </div>
   <% end %>
 </section>
-
 <section>
   <h1>Mes réservations à venir (<%= @confirmed_requests.length %>)</h1>
-  <% @confirmed_requests.each do |request| %>
+  <% if !@confirmed_requests.empty? %>
+    <% @confirmed_requests.each do |request| %>
 
-    <div class="dashboard_request_card bg-primary">
-      <div class="dashboard_details">
-      <div class="dashboard_date">
-      <p> Début de l'emprunt :  <%= request.start_date %> </p>
-      <p> Fin de l'emprunt : <%= request.end_date %> </p>
+      <div class="dashboard_request_card bg-primary">
+        <div class="dashboard_details">
+        <div class="dashboard_date">
+        <p> Début de l'emprunt :  <%= request.start_date %> </p>
+        <p> Fin de l'emprunt : <%= request.end_date %> </p>
+        </div>
+        <p class="profil">
+          Demande effectuée par : <i class="fa-solid fa-user"></i> <%= request.user.first_name %> <%= request.user.last_name %></p>
+        <p>Son message : <%= request.message %></p>
+        <p>Statut : <%= request.status %></p>
+
       </div>
-      <p class="profil">
-        Demande effectuée par : <i class="fa-solid fa-user"></i> <%= request.user.first_name %> <%= request.user.last_name %></p>
-      <p>Son message : <%= request.message %></p>
-      <p>Statut : <%= request.status %></p>
-
-    </div>
-  <% end %>
-  <% else %>
-    <p>Aucune réservation actuellement</p>
-  <% end %>
+    <% end %>
 </section>
 <section>
   <h1>Mes voitures (<%= @cars.length %>)</h1>
@@ -65,20 +62,11 @@
   <% end %>
 </section>
 <section>
-<<<<<<< HEAD
-  <h1>Mes reservations (<%= @bookings.length %>)</h1>
-   <% if !@bookings.empty? %>
-  <% @bookings.each do |booking| %>
-
-    <div class="dashboard_card dashboard_mybooking_card bg-primary">
-      <p>status : <%= booking.status %></p>
-=======
   <h1>Mes demandes de réservations (<%= @bookings.length %>)</h1>
   <% @bookings.each do |booking| %>
 
     <div class="dashboard_request_card bg-primary">
       <p>statut : <%= booking.status %></p>
->>>>>>> master
       <p>Voiture : <%= booking.car.model %> <%= booking.car.brand %></p>
       <p> Début emprunt :  <%= booking.start_date %> </p>
       <p> Fin emprunt : <%= booking.end_date %> </p>
@@ -90,5 +78,4 @@
       <p>Aucune réservation actuellement</p>
   <% end %>
 </section>
-<section></section>
 </div>
