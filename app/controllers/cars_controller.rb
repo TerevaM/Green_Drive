@@ -5,7 +5,6 @@ class CarsController < ApplicationController
   def index
     @q = Car.ransack(params[:q])
     @cars = @q.result(distinct: true)
-
     if params[:q].present?
       start_date = params[:q][:start_date_gteq]
       end_date = params[:q][:end_date_lteq]
