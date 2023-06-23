@@ -13,7 +13,7 @@
         Demande effectuée par : <i class="fa-solid fa-user"></i> <%= request.user.first_name %> <%= request.user.last_name %></p>
       <p>Son message : <%= request.message %></p>
       <%# LE BOUTON ACCEPTER NE FONCTIONNE PAS %>
-        <%= button_to 'Accepter', request, class: "btn btn-success", method: :update if policy(request.car).update? %>
+        <%= button_to 'Accepter', request, class: "btn btn-success", method: :patch if policy(request.car).update? %>
         <%= button_to 'Refuser', request, class: "btn btn-danger", method: :delete if policy(request.car).destroy? %>
       </div>
       <p>Statut : <%= request.status %></p>
