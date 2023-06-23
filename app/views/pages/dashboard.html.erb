@@ -59,6 +59,27 @@
         <h6>Disponibilités</h6>
         <p> Début : <%= car.start_date  %></p>
         <p> Fin : <%= car.end_date %></p>
+
+        <section>
+  <h1>Mes réservations à venir (<%= car.bookings.length %>)</h1>
+  <% if !car.bookings.empty? %>
+    <% car.bookings.each do |request| %>
+
+      <div class="dashboard_request_card bg-primary">
+        <div class="dashboard_details">
+        <div class="dashboard_date">
+        <p> Début de l'emprunt :  <%= request.start_date %> </p>
+        <p> Fin de l'emprunt : <%= request.end_date %> </p>
+        </div>
+        <p class="profil">
+          Demande effectuée par : <i class="fa-solid fa-user"></i> <%= request.user.first_name %> <%= request.user.last_name %></p>
+        <p>Son message : <%= request.message %></p>
+        <p>Statut : <%= request.status %></p>
+
+      </div>
+      <% end %>
+    <% end %>
+</section>
         <% end %>
       <% else %>
           <p>Aucune voiture enregistré pour le moment</p>
