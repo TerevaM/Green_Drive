@@ -2,7 +2,7 @@
   <section class="section">
       <h1>Mes réservations à confirmer (<%= @requests.length %>)</h1>
       <% @requests.each do |request| %>
-        <div class="dashboard_card bg-primary">
+        <div class="card-horisontal background-red m-2">
           <div class="dashboard_details">
           <div class="dashboard_date">
           <p> Début de l'emprunt :  <%= request.start_date %> </p>
@@ -11,8 +11,10 @@
           <p class="profil">
             Demande effectuée par : <i class="fa-solid fa-user"></i> <%= request.user.first_name %> <%= request.user.last_name %></p>
           <p>Son message : <%= request.message %></p>
-            <%= button_to 'Accepter', accept_booking_path(request.id), method: :patch, class: 'btn btn-success' %>
-            <%= button_to 'Refuser', request, class: "btn btn-danger", method: :delete if policy(request.car).destroy? %>
+          <div class="d-flex">
+            <%= button_to 'Accepter', accept_booking_path(request.id), method: :patch, class: 'btn btn-success m-1' %>
+            <%= button_to 'Refuser', request, class: "btn btn-danger m-1", method: :delete if policy(request.car).destroy? %>
+          </div>
           </div>
           <p>Statut : <%= request.status %></p>
         </div>
@@ -25,24 +27,33 @@
     <h1>Mes voitures (<%= @cars.length %>)</h1>
     <ul class="dashboard_list_car">
       <% @cars.each do |car| %>
-      <li class="dashboard_car_card">
+
+        <li class="card row" style="width: 80%;">
         <%= car.photos.attached? ? ( cl_image_tag car.photos.first.key, crop: :fill) : image_tag('nowallpaper.jpg') %>
-        <p> Modèle : <%= car.model %></p>
-        <p> Marque : <%= car.brand %></p>
-        <p> Nombre de places : <%= car.number_of_seats %></p>
-        <p> Prix : <%= car.rate %>€/jour</p>
-        <p> Couleur : <%= car.color %></p>
-        <p> Année de sortie : <%= car.year %></p>
-        <p> Description : <%= car.description %></p>
-        <p> Localisation : <%= car.location %></p>
-        <h6>Disponibilités</h6>
-        <p> Début : <%= car.start_date  %></p>
-        <p> Fin : <%= car.end_date %></p>
+          <div class="card-body">
+            <h5 class="card-title"><%= car.model %> <%= car.brand %></h5>
+          </div>
+          <div class="row p-5">
+          <ul class="list-group list-group-flush col-6">
+            <p> Nombre de places : <%= car.number_of_seats %></p>
+            <p> Prix : <%= car.rate %>€/jour</p>
+            <p> Couleur : <%= car.color %></p>
+            <p> Année de sortie : <%= car.year %></p>
+          </ul>
+          <ul class="list-group list-group-flush col-6">
+            <p> Description : <%= car.description %></p>
+            <p> Localisation : <%= car.location %></p>
+            <h6>Disponibilités</h6>
+            <p> Début : <%= car.start_date  %></p>
+            <p> Fin : <%= car.end_date %></p>
+          </ul>
+          </div>
+        </li>
           <section>
       <h1>Mes réservations à venir (<%= car.bookings.length %>)</h1>
       <% if !car.bookings.empty? %>
         <% car.bookings.each do |request| %>
-          <div class="dashboard_request_card bg-primary">
+          <div class="dashboard_request_card">
             <div class="dashboard_details">
               <div class="dashboard_date">
               <p> Début de l'emprunt :  <%= request.start_date %> </p>
@@ -56,7 +67,9 @@
             </div>
           </div>
         <% end %>
-      <% end %>
+      <% else %>
+        <p>Aucune reservation pour cette voiture.</p>
+        <% end %>
       </section>
       </li>
       <% end %>
@@ -70,11 +83,8 @@
       <% if !@bookings.empty? %>
       <% @bookings.each do |booking| %>
 
-        <div class="card-horisontal background-red">
+        <div class="card-horisontal background-red m-2">
           <div class="row justify-content-center w-100">
-            <div class="col-3">
-              <img src="" alt="profile-photo">
-            </div>
 
             <div class="col-6">
               <p> <b>Statut :</b> <%= booking.status %></p>
