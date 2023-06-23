@@ -27,7 +27,6 @@ class BookingsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
   def destroy
     @booking.destroy
     authorize @booking

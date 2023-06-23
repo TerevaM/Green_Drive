@@ -19,8 +19,6 @@ class BookingPolicy < ApplicationPolicy
 
   def accept?
     record.car.user == user
-    # record: the restaurant passed to the `authorize` method in controller
-    # user: the `current_user` signed in with Devise
   end
 
   def destroy?

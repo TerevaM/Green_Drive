@@ -1,27 +1,25 @@
- <div class="form-car"><div class="form-left"><%= simple_form_for(@car) do |f| %>
+<%= simple_form_for(@car) do |f| %>
+<div class="form-car">
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-
+    <div class="form-left">
     <%= f.input :model, placeholder: 'Modèle', label: false %>
     <%= f.input :brand, label: false, placeholder: 'Marque' %>
     <%= f.input :color, label: false, placeholder: 'Couleur' %>
     <%= f.input :location, label: false, placeholder: 'Ville' %>
     <%= f.input :year, :collection => 2012..2023, label: 'Année de construction' %>
-    <%= f.input :number_of_seats, :collection => 1..9, label: 'Nombre de sièges' %>
+    <%= f.input :description, label: false, as: :text, :input_html => { :cols => 5, :rows => 5 }, placeholder: 'Description', class: "form-control" %>
     </div>
 
     <div class="form-right">
-    <%= f.input :description, label: false, placeholder: 'Description', class: "form-control" %>
-    <p></p>
+    <%= f.input :number_of_seats, :collection => 1..9, label: 'Nombre de sièges' %>
     <%= f.input :start_date, label: 'Date de début' %>
     <%= f.input :end_date, label: 'Date de fin' %>
     <%= f.input :rate , label: false, placeholder: 'Prix par jour'%>
-    <%# changer l'image url en download image %>
     <%= f.input :photo, as: :file, input_html: { multiple: true}, label: 'Ajouter vos photos', class: "form-control" %>
-         <%# input_html: { multiple: true} %>
 
     <%= f.submit 'Enregistrer', class: "btn btn-success" %>
+    </div>
 </div>
   <% end %>
-</div>
