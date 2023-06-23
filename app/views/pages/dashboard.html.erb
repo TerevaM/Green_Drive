@@ -11,7 +11,6 @@
           <p class="profil">
             Demande effectuée par : <i class="fa-solid fa-user"></i> <%= request.user.first_name %> <%= request.user.last_name %></p>
           <p>Son message : <%= request.message %></p>
-          <%# LE BOUTON ACCEPTER NE FONCTIONNE PAS %>
             <%= button_to 'Accepter', accept_booking_path(request.id), method: :patch, class: 'btn btn-success' %>
             <%= button_to 'Refuser', request, class: "btn btn-danger", method: :delete if policy(request.car).destroy? %>
           </div>
