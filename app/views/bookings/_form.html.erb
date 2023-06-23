@@ -1,10 +1,9 @@
 <%= simple_form_for [@car, @booking] do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
   <%= f.input :start_date, label: 'Date de début' %>
   <%= f.input :end_date, label: 'Date de fin' %>
   <%= f.input :message, label: false , placeholder: 'Message à l\'attention du propriétaire' %>
-<%# hidden_field : :status =  pending by default %>
+  <%= f.input :status, :as => "hidden", :input_html => { :value => "En attente" }%>
   <%= f.submit 'Enregistrer', class: "btn btn-success" %>
 <% end %>

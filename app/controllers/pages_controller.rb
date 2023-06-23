@@ -7,10 +7,9 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @requests = Booking.joins(:car).where(cars: { user: current_user })
+    @requests = Booking.joins(:car).where(cars: { user: current_user }, status: "En attente")
+    @confirmed_requests = Booking.joins(:car).where(cars: { user: current_user }, status: "Confirmée")
     @cars = current_user.cars
     @bookings = current_user.bookings
   end
 end
-
-# Je veux tout les bookings dans lesquelles l'owner de la voiture de ces bookings est le current user
