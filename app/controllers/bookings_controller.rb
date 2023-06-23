@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: %i[show edit update destroy status!]
+  before_action :set_booking, only: %i[show destroy accept]
   before_action :set_car, only: [:new, :create, :show, :update]
 
   def index
@@ -13,10 +13,6 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
-    authorize @booking
-  end
-
-  def edit
     authorize @booking
   end
 
@@ -45,8 +41,12 @@ class BookingsController < ApplicationController
     redirect_to dashboard_path, notice: "La réservation a bien été annulée"
   end
 
-  def status!
-    @booking.status = "Confirmée"
+  def accept
+    @booking.status = "Acceptée"
+    if @booking.save!
+      redirect_to dashboard_path
+    end
+    authorize @booking
   end
 
   def status
