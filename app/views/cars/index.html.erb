@@ -1,8 +1,10 @@
 <%= render 'cars/search' %>
 
 <br>
+<% if @q.location_cont %>
 <h1><%=  "Nous avons trouvé #{@cars.length} voitures électriques pour vous à #{@q.location_cont}."%></h1>
 <br>
+<% end %>
 
 <ul class="green_drive_list_cards">
 <% @cars.each do |car| %>
