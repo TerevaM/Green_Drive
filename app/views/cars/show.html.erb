@@ -6,12 +6,15 @@
 <section class="show_card">
 <div class="pictures">
   <div class="main_pic">
-    <%= @car.photos.attached? ? ( cl_image_tag @car.photos.first.key, crop: :fill) : image_tag('tesla-model-3.jpg') %>
-
+    <%= @car.photos.attached? ? ( cl_image_tag @car.photos.first.key, crop: :fill) : image_tag('nowallpaper.jpg') %>
    </div>
   <div class="others_pic">
-    <% @car.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, crop: :fill %>
+    <% @car.photos.drop(1).each do |photo| %>
+     <% if @car.photos.drop(1).empty? %>
+  <%= cl_image_tag car.photos.key, crop: :fill %>
+  <% else %>
+    no image
+    <% end %>
     <% end %>
   </div>
 </div>
@@ -32,7 +35,7 @@
 </section>
 <div class="show_buttons">
 <% if current_user %>
-  <%= link_to 'Réserver maintenant', new_car_booking_path(@car), class: 'btn btn-success' %> |
+  <%= link_to 'Réserver maintenant', new_car_booking_path(@car), class: 'btn btn-success' %>
 <% end %>
 <% if policy(@car).edit? %>
   <%= link_to "Modifier les détails", edit_car_path(@car), class: "btn btn-info" %> |

@@ -13,5 +13,3 @@ class PagesController < ApplicationController
     @bookings = current_user.bookings
   end
 end
-
-# Je veux tout les bookings dans lesquelles l'owner de la voiture de ces bookings est le current user

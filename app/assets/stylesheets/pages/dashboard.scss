@@ -1,8 +1,19 @@
-.dashboard_request_card {
-  width: 90%;
-  display: flex;
-  margin: 0 auto;
-  border-radius: 30px;
-  padding: 20px;
-  background-color: $dark-green;
+.dashboard {
+  padding: 0 30px;
+
+  h1 {
+    font-family: 'Potta One', cursive;    ;
+    color: $dark-green;
+  }
+  .dashboard_card {
+    width: 90%;
+    display: flex;
+    margin: 0 auto;
+    border-radius: 30px;
+    padding: 20px;
+    background-color: $dark-green;
+  }
+  .dashboard_mybooking_card {
+    width: 50%;
+  }
 }

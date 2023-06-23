@@ -49,6 +49,10 @@ class BookingsController < ApplicationController
     @booking.status = "Confirmée"
   end
 
+  def status
+    @booking.status = params[:format]
+  end
+
   private
 
   def set_booking
