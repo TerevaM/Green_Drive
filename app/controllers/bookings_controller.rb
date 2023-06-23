@@ -28,13 +28,6 @@ class BookingsController < ApplicationController
     end
   end
 
-  def update
-    @booking.status = "Confirmée"
-    authorize @booking
-    @booking.update
-    redirect_to dashboard_path, notice: "Votre réservation a bien été validée."
-  end
-
   def destroy
     @booking.destroy
     authorize @booking
@@ -42,9 +35,9 @@ class BookingsController < ApplicationController
   end
 
   def accept
-    @booking.status = "Acceptée"
+    @booking.status = "Confirmée"
     if @booking.save!
-      redirect_to dashboard_path
+      redirect_to dashboard_path, notice: "Votre réservation a bien été validée."
     end
     authorize @booking
   end
