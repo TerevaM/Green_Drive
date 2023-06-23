@@ -7,24 +7,23 @@
     <%= render 'cars/search' %>
   </section>
 
-  <section>
-    <h1>Voitures de location</h1>
-    <ul class="green_drive_list_cards">
-  <% @cars.each do |car| %>
-  <li class="list-group-item green_drive_card">
-      <%= car.photos.attached? ? ( cl_image_tag car.photos.first.key, crop: :fill) : image_tag('nowallpaper.jpg') %>
-      <div class="green_card_stats card-body">
-        <div class="card_header">
-        <h5 class="card-title"><%= car.model %> <%= car.brand %></h5>
-         <p class="card-text"><%= car.rate%>€/jour
-        </div>
-        <div class="card-body-text">
-        <p><i class="fa-solid fa-location-dot"></i> <%= car.location %></p>
-        <%= link_to "Voir +", car_path(car), class: "btn btn-success" %></p>
-    </div>
-  </li>
-  <% end %>
-
-  </ul>
-  </section>
+  <div class="w-80 p-3 home-container">
+      <h1 id="home-headline">Voitures de location</h1>
+      <ul class="green_drive_list_cards">
+      <% @cars.each do |car| %>
+        <li class="list-group-item green_drive_card">
+        <%= car.photos.attached? ? ( cl_image_tag car.photos.first.key, crop: :fill) : image_tag('nowallpaper.jpg') %>
+        <div class="green_card_stats card-body">
+          <div class="card_header">
+            <h5 class="card-title"><%= car.model %> <%= car.brand %></h5>
+            <p class="card-text"><%= car.rate%>€/jour
+          </div>
+          <div class="card-body-text">
+            <p><i class="fa-solid fa-location-dot"></i> <%= car.location %></p>
+            <%= link_to "Voir +", car_path(car), class: "btn btn-success" %></p>
+          </div>
+      </li>
+      <% end %>
+    </ul>
+  </div>
 </div>

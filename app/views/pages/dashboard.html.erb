@@ -1,83 +1,99 @@
-<div class="dashboard">
-<section>
-  <h1>Mes réservations à confirmer (<%= @requests.length %>)</h1>
-  <% @requests.each do |request| %>
+<div class="container">
 
-    <div class="dashboard_card bg-primary">
-      <div class="dashboard_details">
-      <div class="dashboard_date">
-      <p> Début de l'emprunt :  <%= request.start_date %> </p>
-      <p> Fin de l'emprunt : <%= request.end_date %> </p>
-      </div>
-      <p class="profil">
-        Demande effectuée par : <i class="fa-solid fa-user"></i> <%= request.user.first_name %> <%= request.user.last_name %></p>
-      <p>Son message : <%= request.message %></p>
-      <%# LE BOUTON ACCEPTER NE FONCTIONNE PAS %>
-        <%= button_to 'Accepter', request, class: "btn btn-success", method: :update if policy(request.car).update? %>
-        <%= button_to 'Refuser', request, class: "btn btn-danger", method: :delete if policy(request.car).destroy? %>
-      </div>
-      <p>Statut : <%= request.status %></p>
-
-    </div>
-  <% end %>
-</section>
-<section>
-  <h1>Mes réservations à venir (<%= @confirmed_requests.length %>)</h1>
-  <% if !@confirmed_requests.empty? %>
-    <% @confirmed_requests.each do |request| %>
-
-      <div class="dashboard_request_card bg-primary">
-        <div class="dashboard_details">
-        <div class="dashboard_date">
-        <p> Début de l'emprunt :  <%= request.start_date %> </p>
-        <p> Fin de l'emprunt : <%= request.end_date %> </p>
+  <section class="section">
+      <h1>Mes réservations à confirmer (<%= @requests.length %>)</h1>
+      <% @requests.each do |request| %>
+        <div class="dashboard_card bg-primary">
+          <div class="dashboard_details">
+          <div class="dashboard_date">
+          <p> Début de l'emprunt :  <%= request.start_date %> </p>
+          <p> Fin de l'emprunt : <%= request.end_date %> </p>
+          </div>
+          <p class="profil">
+            Demande effectuée par : <i class="fa-solid fa-user"></i> <%= request.user.first_name %> <%= request.user.last_name %></p>
+          <p>Son message : <%= request.message %></p>
+          <%# LE BOUTON ACCEPTER NE FONCTIONNE PAS %>
+            <%= button_to 'Accepter', request, class: "btn btn-success", method: :update if policy(request.car).update? %>
+            <%= button_to 'Refuser', request, class: "btn btn-danger", method: :delete if policy(request.car).destroy? %>
+          </div>
+          <p>Statut : <%= request.status %></p>
         </div>
-        <p class="profil">
-          Demande effectuée par : <i class="fa-solid fa-user"></i> <%= request.user.first_name %> <%= request.user.last_name %></p>
-        <p>Son message : <%= request.message %></p>
-        <p>Statut : <%= request.status %></p>
-
-      </div>
       <% end %>
-    <% end %>
-</section>
-<section>
-  <h1>Mes voitures (<%= @cars.length %>)</h1>
-   <% if !@cars.empty? %>
-    <% @cars.each do |car| %>
-    <%= car.photos.attached? ? ( cl_image_tag car.photos.first.key, crop: :fill) : image_tag('nowallpaper.jpg') %>
-    <p> Modèle : <%= car.model %></p>
-    <p> Marque : <%= car.brand %></p>
-    <p> Nombre de places : <%= car.number_of_seats %></p>
-    <p> Prix : <%= car.rate %>€/jour</p>
-    <p> Couleur : <%= car.color %></p>
-    <p> Année de sortie : <%= car.year %></p>
-    <p> Description : <%= car.description %></p>
-    <p> Localisation : <%= car.location %></p>
-    <h6>Disponibilités</h6>
-    <p> Début : <%= car.start_date  %></p>
-    <p> Fin : <%= car.end_date %></p>
-    <% end %>
-  <% else %>
-      <p>Aucune voiture enregistré pour le moment</p>
-  <% end %>
-</section>
-<section>
-  <h1>Mes demandes de réservations (<%= @bookings.length %>)</h1>
-  <% if !@bookings.empty? %>
-  <% @bookings.each do |booking| %>
+    </section>
+    <br>
 
-    <div class="dashboard_request_card bg-primary">
-      <p>statut : <%= booking.status %></p>
-      <p>Voiture : <%= booking.car.model %> <%= booking.car.brand %></p>
-      <p> Début emprunt :  <%= booking.start_date %> </p>
-      <p> Fin emprunt : <%= booking.end_date %> </p>
-      <p> Message envoyé : <%= booking.message %></p>
-      <%= button_to 'Annuler la réservation', booking, class: "btn btn-danger", method: :delete if policy(booking).destroy? %>
-    </div>
-  <% end %>
-  <% else %>
-      <p>Aucune réservation actuellement</p>
-  <% end %>
-</section>
-</div>
+    <section class="section">
+      <h1>Mes réservations à venir (<%= @confirmed_requests.length %>)</h1>
+      <% if !@confirmed_requests.empty? %>
+        <% @confirmed_requests.each do |request| %>
+          <div class="card-horisontal background-red">
+            <div class="dashboard_details">
+            <div class="dashboard_date">
+            <p> Début de l'emprunt :  <%= request.start_date %> </p>
+            <p> Fin de l'emprunt : <%= request.end_date %> </p>
+            </div>
+            <p class="profil">
+              Demande effectuée par : <i class="fa-solid fa-user"></i> <%= request.user.first_name %> <%= request.user.last_name %></p>
+            <p>Son message : <%= request.message %></p>
+            <p>Statut : <%= request.status %></p>
+          </div>
+          <% end %>
+        <% end %>
+    </section>
+    <br>
+
+
+
+    <section class="section">
+      <h1>Mes voitures (<%= @cars.length %>)</h1>
+      <% if !@cars.empty? %>
+        <% @cars.each do |car| %>
+        <%= car.photos.attached? ? ( cl_image_tag car.photos.first.key, crop: :fill) : image_tag('nowallpaper.jpg') %>
+        <p> Modèle : <%= car.model %></p>
+        <p> Marque : <%= car.brand %></p>
+        <p> Nombre de places : <%= car.number_of_seats %></p>
+        <p> Prix : <%= car.rate %>€/jour</p>
+        <p> Couleur : <%= car.color %></p>
+        <p> Année de sortie : <%= car.year %></p>
+        <p> Description : <%= car.description %></p>
+        <p> Localisation : <%= car.location %></p>
+        <h6>Disponibilités</h6>
+        <p> Début : <%= car.start_date  %></p>
+        <p> Fin : <%= car.end_date %></p>
+        <% end %>
+      <% else %>
+          <p>Aucune voiture enregistré pour le moment</p>
+      <% end %>
+    </section>
+
+
+    <section class="section">
+      <h1>Mes demandes de réservations (<%= @bookings.length %>)</h1>
+      <% if !@bookings.empty? %>
+      <% @bookings.each do |booking| %>
+
+        <div class="card-horisontal background-red">
+          <div class="row justify-content-center w-100">
+            <div class="col-3">
+              <img src="" alt="profile-photo">
+            </div>
+
+            <div class="col-6">
+              <p> <b>Statut :</b> <%= booking.status %></p>
+              <p> <%= booking.start_date %> - <%= booking.end_date %> </p>
+              <p>Voiture : <%= booking.car.model %> <%= booking.car.brand %></p>
+              <p> Message envoyé : <%= booking.message %></p>
+            </div>
+
+            <div class="col-3 d-flex align-items-center">
+              <%= button_to 'Annuler la réservation', booking, class: "button-signature-card", method: :delete if policy(booking).destroy? %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <% else %>
+          <p>Aucune réservation actuellement</p>
+      <% end %>
+    </section>
+    <br>
+  </div>
