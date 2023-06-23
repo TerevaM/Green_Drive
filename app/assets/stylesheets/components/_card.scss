@@ -5,7 +5,7 @@ $card_size: 350px;
   justify-content: space-around;
   padding: 0;
   grid-template-columns: repeat(auto-fill, $card_size);
-  gap: 30px;
+  gap: 39px 21px;
 
   .green_drive_card {
     position: relative;
@@ -24,15 +24,27 @@ $card_size: 350px;
       padding: 5px 20px;
       .card_header {
         display: flex;
+        margin-top: 15px;
         justify-content: space-between;
         .card-title {
           font-weight: bold;
+          font-size: 1.10rem;
+          margin-bottom: 8px;
         }
       }
+      .card-body-text{
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 21px;
+        p {
+          margin: 0;
+        }
       a {
+        text-decoration: none;
+        color: black;
         position: absolute;
-        padding:5px 20px;
-        bottom: 10px;
+        padding: 5px 20px;
         right: 0;
         transition: all 0.5s;
       }
@@ -40,17 +52,11 @@ $card_size: 350px;
         padding:5px 30px;
         transition: all 0.5s;
       }
+      }
     }
   }
   .green_drive_card:hover {
     box-shadow: 3px 3px 4px rgba(128, 128, 128, 0.669);
     transition: all 0.5s;
   }
-}
-
-.card-body-text{
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 2em;
 }
